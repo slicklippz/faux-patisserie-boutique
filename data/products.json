@@ -1,0 +1,234 @@
+[
+  {
+    "id": "prod-1",
+    "title": "Sugar Plum Bubble Swirl Cones (Set of 4)",
+    "subtitle": "Tri-color piped bubble peaks, sprinkle collars & candy pinwheel striped cones",
+    "price": 68,
+    "compareAtPrice": 80,
+    "category": "Ice Cream Cones",
+    "images": [
+      "/products/berry-bubble-swirl-cones-set4.jpg"
+    ],
+    "inStock": true,
+    "stockCount": 2,
+    "scarcityBadge": "Small Batch (Set of 4)",
+    "isSold": false,
+    "description": "An enchanting set of four heirloom confections featuring candy-cane blue-and-white pinwheel cones, collar rings of holiday sprinkles, and tri-color whipped frosting peaks crowned with sculpted sugar plum bubbles and sugar frost dusting.",
+    "materials": [
+      "Lightweight non-toxic air-dry foam clay",
+      "Micro-crystalline glass sugar crystals",
+      "Hand-scored pinwheel striped cone bases",
+      "Protective matte archival sealant"
+    ],
+    "dimensions": "6.25\" H x 2.5\" W each | 1.9 oz each (tree-branch safe)",
+    "stylingTip": "Nestle into frosted evergreen branches or showcase on your holiday buffet runner.",
+    "shipsInDays": "Ships in 1-2 business days",
+    "rating": 5.0,
+    "reviewCount": 38,
+    "featured": true,
+    "creatorCredit": "Handcrafted with joy by Vette"
+  },
+  {
+    "id": "prod-2",
+    "title": "Velvet Berry Cake Slice with Maraschino Cherry",
+    "subtitle": "Realistic faux gateau slice with hand-whipped piped frosting & glossy cabochon cherry",
+    "price": 34,
+    "compareAtPrice": 42,
+    "category": "Cake Slices & Gift Boxes",
+    "images": [
+      "/products/velvet-berry-cake-slice.jpg"
+    ],
+    "inStock": true,
+    "stockCount": 3,
+    "scarcityBadge": "Small Batch Handcrafted",
+    "isSold": false,
+    "description": "Rich deep-berry sponge texture layered between featherlight piped vanilla whipped cream clay, drizzled with faux glossy raspberry coulis and crowned with a lifelike resin maraschino cherry on a dollop of whipped cream.",
+    "materials": [
+      "Textured artisan composite clay",
+      "Gloss-glazed resin maraschino cherry",
+      "High-clarity faux coulis glaze & sugar crystal crust",
+      "Reinforced concealed hanging hook"
+    ],
+    "dimensions": "4.5\" L x 3.25\" H x 2.75\" W | 2.1 oz",
+    "stylingTip": "Pairs exquisitely on a multi-tiered dessert stand or hanging front-and-center at eye level on a holiday tree.",
+    "shipsInDays": "Ships in 1-2 business days",
+    "rating": 5.0,
+    "reviewCount": 42,
+    "featured": true,
+    "creatorCredit": "Original design sculpted by Vette with joy"
+  },
+  {
+    "id": "prod-3",
+    "title": "Purple Galaxy Swirl Trio (Cone, Cake Slice & Cupcake)",
+    "subtitle": "Collector 3-piece celestial pastel dessert trio with cherry toppers & sugar frost",
+    "price": 85,
+    "compareAtPrice": 98,
+    "category": "Custom Requests",
+    "images": [
+      "/products/purple-galaxy-trio.jpg"
+    ],
+    "inStock": false,
+    "stockCount": 0,
+    "scarcityBadge": "SOLD OUT",
+    "isSold": true,
+    "description": "A bespoke artisanal trio featuring an iridescent purple waffle swirl cone, a matching layered purple cake slice with frosting ruffles, and a star-piped cupcake, each crowned with a frosted cherry topper and sugar beads.",
+    "materials": [
+      "Triple-blend clay confectionary medium",
+      "Cosmic sugar bead frosting glaze",
+      "Hand-sculpted cherries with delicate stems",
+      "Jewelry-grade mounting eyelets"
+    ],
+    "dimensions": "Cone: 6.5\" H | Cake: 4\" L | Cupcake: 4\" H | Total Trio Weight: 5.4 oz",
+    "stylingTip": "Display together on a mirrored tray or spread rhythmically across tree branches. Custom commission available.",
+    "shipsInDays": "Archived Collector Piece (Commission Similar Available)",
+    "rating": 5.0,
+    "reviewCount": 19,
+    "featured": false,
+    "creatorCredit": "Original bespoke commission by Vette"
+  },
+  {
+    "id": "prod-4",
+    "title": "Pastel Patisserie Donut Collection (Set of 6)",
+    "subtitle": "Six gourmet faux donuts with baby pink, mint, lavender, and lemon royal glaze",
+    "price": 95,
+    "compareAtPrice": 115,
+    "category": "Donut Wreaths",
+    "images": [
+      "/products/pastel-donuts-set6.jpg"
+    ],
+    "inStock": true,
+    "stockCount": 4,
+    "scarcityBadge": "Set of 6 • Best Seller",
+    "isSold": false,
+    "description": "Set of 6 pastel artisanal donuts sculpted with golden-baked crust texture, pillowy yeast rings, and thick pastel royal icing. Each topped with charming miniature clay treats: popsicle, ice cream cone, key lime pie slice, soft-serve, and frosted cake wedge.",
+    "materials": [
+      "Featherweight porous clay foam (hyper-realistic dough)",
+      "High-gloss enamel glaze finish",
+      "Hand-sculpted miniature clay dessert toppers",
+      "Ivory velvet hanging ribbons"
+    ],
+    "dimensions": "3.5\" Diameter x 1.25\" Thick each | 1.1 oz each",
+    "stylingTip": "Hang individually around the tree, or wire onto a boxwood holiday wreath for a magical candyland front door entry.",
+    "shipsInDays": "Ships in 1-2 business days",
+    "rating": 5.0,
+    "reviewCount": 64,
+    "featured": true,
+    "creatorCredit": "Handcrafted with joy by Vette • Inspired by patisserie charms"
+  },
+  {
+    "id": "prod-5",
+    "title": "Festive Red & Green Holiday Sprinkle Donuts (Set of 9)",
+    "subtitle": "Complete heirloom candyland collection with candy cane stripes & holly sprigs",
+    "price": 125,
+    "compareAtPrice": 150,
+    "category": "Donut Wreaths",
+    "images": [
+      "/products/holiday-sprinkle-donuts-set9.jpg"
+    ],
+    "inStock": true,
+    "stockCount": 1,
+    "scarcityBadge": "Only 1 Left in Stock",
+    "isSold": false,
+    "description": "A show-stopping 9-piece festive donut collection. Includes shimmering evergreen glitter and ruby red glitter donuts topped with creamy white glaze drizzle, hand-cut holiday candy cane sprinkles, and miniature holly pearls.",
+    "materials": [
+      "Sculpted faux pastry dough composite",
+      "UV-sealed ruby and emerald glitter coating",
+      "Faux crushed peppermint sugar flakes & holly pearls",
+      "Double-braided satin hanging loops"
+    ],
+    "dimensions": "3.5\" Diameter each | Complete boxed set 12\" x 12\"",
+    "stylingTip": "The ultimate full-tree theme set! Sufficient to outfit a 6ft to 7.5ft dessert-themed Christmas tree.",
+    "shipsInDays": "Ships in 1-2 business days",
+    "rating": 5.0,
+    "reviewCount": 51,
+    "featured": true,
+    "creatorCredit": "Handcrafted with joy by Vette • Creator inspired with Vette's glitter technique"
+  },
+  {
+    "id": "prod-6",
+    "title": "Mint Chocolate Chip Striped Ornament Cones (Set of 4)",
+    "subtitle": "Pristine mint cream soft-serve twists with dark faux chocolate ganache swirls",
+    "price": 68,
+    "compareAtPrice": 80,
+    "category": "Ice Cream Cones",
+    "images": [
+      "/products/mint-chocolate-chip-cones-set4.jpg"
+    ],
+    "inStock": true,
+    "stockCount": 3,
+    "scarcityBadge": "Small Batch (Set of 4)",
+    "isSold": false,
+    "description": "Set of four nostalgic mint chocolate chip soft-serve waffle cones. Hand-turned waffle cones with green-and-white pinwheel striped cone bases and peppermint medallions, topped with chocolate biscuit layers, piped pastel mint peaks, chocolate bars, and mint leaf picks.",
+    "materials": [
+      "Pinwheel-striped composite waffle cone base",
+      "Piped lightweight whipped aerated clay in pastel mint",
+      "Sculpted chocolate bar squares & candy medallions",
+      "Concealed hanging wire harness"
+    ],
+    "dimensions": "6.25\" H x 2.5\" W each | 1.8 oz each",
+    "stylingTip": "Hang from branch tips so the delicate cone point catches the glow of your Christmas tree fairy lights.",
+    "shipsInDays": "Ships in 1-2 business days",
+    "rating": 5.0,
+    "reviewCount": 29,
+    "featured": true,
+    "creatorCredit": "Handcrafted with joy by Vette • Inspired by community tutorial technique"
+  },
+  {
+    "id": "prod-7",
+    "title": "Peppermint Twist & Blue Frosting Cookie Cones (Set of 4)",
+    "subtitle": "Whimsical winter wonderland cones with frosted cookie picks & blue sugar glaze",
+    "price": 68,
+    "compareAtPrice": 80,
+    "category": "Ice Cream Cones",
+    "images": [
+      "/products/peppermint-twist-cones-set4.jpg"
+    ],
+    "inStock": true,
+    "stockCount": 2,
+    "scarcityBadge": "Limited Holiday Edition",
+    "isSold": false,
+    "description": "Inspired by fairy-tale Nordic winters, these four artisan cones feature candy-cane red and white pinwheel striped cones, chocolate wafer discs, pastel sky-blue frosting swirls dusted in sugar frost, and miniature striped candy cane straws embedded in the top.",
+    "materials": [
+      "Aerated silicone-clay whipped blend in winter sky blue",
+      "Hand-striped candy cane straw picks",
+      "Glass bead frost dusting & chocolate biscuit layer",
+      "Durable metallic silver hanging loops"
+    ],
+    "dimensions": "6.5\" H x 2.75\" W each | 2.0 oz each",
+    "stylingTip": "A dream pairing for silver, white, or baby blue snowy winter wonderland aesthetic trees.",
+    "shipsInDays": "Ships in 1-2 business days",
+    "rating": 5.0,
+    "reviewCount": 33,
+    "featured": false,
+    "creatorCredit": "Handcrafted with joy by Vette • Creator inspired with Vette's winter glaze"
+  },
+  {
+    "id": "prod-8",
+    "title": "Citrus Tropics Faux Soft-Serve Trio (Pineapple, Lime & Banana)",
+    "subtitle": "Bright pastel sorbet cones infused with sunshine colors for coastal & citrus trees",
+    "price": 58,
+    "compareAtPrice": 72,
+    "category": "Ice Cream Cones",
+    "images": [
+      "/products/citrus-tropics-trio.jpg"
+    ],
+    "inStock": true,
+    "stockCount": 5,
+    "scarcityBadge": "Tropical Holiday Collection",
+    "isSold": false,
+    "description": "Crafted in Vette's studio: three sun-kissed sorbet cones featuring yellow-and-white pinwheel cones, sculpted pineapple charms, candied key lime slice, and a banana cream swirl with miniature banana bunch. Dusted with sparkling confection sugar.",
+    "materials": [
+      "Artisan sculpted foam clay confection",
+      "Translucent resin candied citrus fruit slices & miniature banana charms",
+      "Yellow-and-white striped pinwheel cone bases",
+      "Gold lurex hanging cord"
+    ],
+    "dimensions": "5.75\" H x 2.5\" W each | 1.7 oz each",
+    "stylingTip": "Ideal for coastal holiday trees, summer patio decor, or year-round sweet shop kitchen vignettes.",
+    "shipsInDays": "Ships in 1-2 business days",
+    "rating": 5.0,
+    "reviewCount": 27,
+    "featured": false,
+    "creatorCredit": "Original design sculpted by Vette with joy"
+  }
+]

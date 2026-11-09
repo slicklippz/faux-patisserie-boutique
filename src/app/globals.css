@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --background: #FAF8F5;
+    --foreground: #1C1917;
+    --alabaster: #FAF8F5;
+    --espresso: #1C1917;
+    
+    /* Vette's Signature Green Palette */
+    --forest: #2D5A3D;
+    --forest-dark: #1E3F2B;
+    --forest-light: #EDF5F0;
+    --sage: #4A6B53;
+    --sage-light: #F0F6F2;
+    --mint-frosting: #86C1A4;
+    
+    /* Accents */
+    --berry: #831843;
+    --terracotta: #C2410C;
+    --gold: #D97706;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: "Plus Jakarta Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .font-serif {
+    font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #FAF8F5;
+}
+::-webkit-scrollbar-thumb {
+  background: #C4D7CB;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #8FA898;
+}
+
+/* Glassmorphism and subtle craft borders */
+.craft-card {
+  background-color: #FFFFFF;
+  border: 1px solid rgba(45, 90, 61, 0.12);
+  box-shadow: 0 4px 20px -2px rgba(45, 90, 61, 0.05);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.craft-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px -4px rgba(45, 90, 61, 0.15);
+  border-color: rgba(45, 90, 61, 0.35);
+}
+
+.badge-sold {
+  background: rgba(28, 25, 23, 0.88);
+  backdrop-filter: blur(4px);
+  color: #FFFFFF;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 2.5s infinite;
+}
