@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 import { CartProvider } from "@/lib/cart-context";
 import { CartDrawer } from "@/components/cart/CartDrawer";
@@ -6,12 +7,12 @@ import { QuickViewModal } from "@/components/catalog/QuickViewModal";
 import { Toaster } from "@/components/ui/Toaster";
 
 export const metadata: Metadata = {
-  title: "Vette's Crafting | Handmade Faux Confections & Heirloom Holiday Decor",
+  title: "Vette's Crafting | Air Dry Foam Clay",
   description:
-    "Welcome to Vette's Crafting! A small, handmade hobby bringing you unique faux-bake holiday confections, cakes, and donut ornaments made by hand with joy. Direct from Florida.",
+    "Welcome to Vette's Crafting! Custom air dry foam clay faux-bake ornaments, holiday decor, and collectible displays. Handmade with joy.",
   openGraph: {
-    title: "Vette's Crafting | Handmade with Joy",
-    description: "Handcrafted faux patisserie confections that add a personal touch to your home. New designs posted weekly!",
+    title: "Vette's Crafting | Air Dry Foam Clay",
+    description: "Unique crafted pieces that add a personal touch to your home. New designs posted weekly!",
     type: "website",
   },
 };
@@ -31,13 +32,23 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="min-h-screen flex flex-col bg-[#FAF8F5] text-[#1C1917] selection:bg-[#EBF4EE] selection:text-[#2D5A3D]">
+      <body className="min-h-screen flex flex-col bg-white text-[#1E293B] selection:bg-[#FEF08A] selection:text-[#0F766E]">
         <CartProvider>
           {children}
           <CartDrawer />
           <QuickViewModal />
           <Toaster />
         </CartProvider>
+        <Script
+          crossOrigin="anonymous"
+          src="//unpkg.com/react-grab/dist/index.global.js"
+          strategy="afterInteractive"
+        />
+        <Script
+          crossOrigin="anonymous"
+          src="//unpkg.com/same-runtime/dist/index.global.js"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );

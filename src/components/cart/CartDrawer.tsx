@@ -15,10 +15,10 @@ import {
   Truck,
   ShieldCheck,
   Check,
-  Tag
+  Tag,
+  Leaf
 } from 'lucide-react';
 
-// AOV Gamification Upsell Items (Baymard CRO recommendation)
 const UPSELL_ITEMS: Product[] = [
   {
     id: 'upsell-hooks',
@@ -119,26 +119,26 @@ export function CartDrawer() {
   return (
     <>
       <div className="fixed inset-0 z-50 overflow-hidden">
-        {/* Backdrop */}
+        {/* Clean Light Backdrop */}
         <div
-          className="fixed inset-0 bg-[#1C1917]/60 backdrop-blur-sm transition-opacity"
+          className="fixed inset-0 bg-[#0F172A]/40 backdrop-blur-sm transition-opacity"
           onClick={closeCart}
         />
 
         <div className="fixed inset-y-0 right-0 max-w-full flex pl-10">
-          <div className="w-screen max-w-md bg-[#FAF8F5] shadow-2xl flex flex-col justify-between border-l border-[#1C1917]/10">
+          <div className="w-screen max-w-md bg-white shadow-2xl flex flex-col justify-between border-l border-[#E2E8F0]">
             
-            {/* Top Drawer Header */}
-            <div className="p-5 bg-white border-b border-[#1C1917]/10 flex items-center justify-between">
+            {/* Top Drawer Header (Clean White & Teal) */}
+            <div className="p-5 bg-white border-b border-[#E2E8F0] flex items-center justify-between">
               <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-full bg-[#FCE7F3] flex items-center justify-center text-[#7E22CE]">
+                <div className="w-8 h-8 rounded-full bg-[#F0FDFA] border border-[#CCFBF1] flex items-center justify-center text-[#0D9488]">
                   <ShoppingBag className="w-4 h-4" />
                 </div>
                 <div>
-                  <h2 className="font-serif text-lg font-bold text-[#1C1917]">
+                  <h2 className="font-serif text-lg font-bold text-[#1E293B]">
                     Your Confection Tote
                   </h2>
-                  <p className="text-[11px] text-[#4A5D4E] font-medium">
+                  <p className="text-[11px] text-[#16A34A] font-bold">
                     {itemCount} {itemCount === 1 ? 'Handmade Piece' : 'Handmade Pieces'}
                   </p>
                 </div>
@@ -146,81 +146,81 @@ export function CartDrawer() {
 
               <button
                 onClick={closeCart}
-                className="w-8 h-8 rounded-full hover:bg-stone-100 flex items-center justify-center text-[#1C1917]/60 hover:text-[#1C1917] transition"
+                className="w-8 h-8 rounded-full hover:bg-[#F1F5F9] flex items-center justify-center text-[#64748B] hover:text-[#1E293B] transition"
                 aria-label="Close cart"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            {/* Zeigarnik Effect Free Shipping Meter */}
-            <div className="p-4 bg-gradient-to-r from-[#FFF9F5] to-[#FAF5F0] border-b border-[#1C1917]/10 space-y-2">
-              <div className="flex items-center justify-between text-xs font-semibold">
-                <span className="flex items-center gap-1.5 text-[#1C1917]">
-                  <Truck className="w-4 h-4 text-[#7E22CE]" />
+            {/* Zeigarnik Effect Free Shipping Meter (Yellow to Green) */}
+            <div className="p-4 bg-[#FEF9C3]/40 border-b border-[#FEF08A] space-y-2">
+              <div className="flex items-center justify-between text-xs font-bold">
+                <span className="flex items-center gap-1.5 text-[#1E293B]">
+                  <Truck className="w-4 h-4 text-[#0D9488]" />
                   {hasFreeShipping ? (
-                    <strong className="text-emerald-700">🎉 FREE Priority Shipping Unlocked!</strong>
+                    <strong className="text-[#15803D]">🎉 FREE Priority Shipping Unlocked!</strong>
                   ) : (
                     <span>
-                      Add <strong className="text-[#7E22CE]">${amountAwayFromFreeShipping.toFixed(2)}</strong> for Free Priority Shipping
+                      Add <strong className="text-[#E11D48]">${amountAwayFromFreeShipping.toFixed(2)}</strong> for Free Shipping
                     </span>
                   )}
                 </span>
-                <span className="text-[11px] text-[#1C1917]/50 font-bold">{freeShippingProgress}%</span>
+                <span className="text-[11px] text-[#854D0E] font-black">{freeShippingProgress}%</span>
               </div>
 
               {/* Progress Bar Track */}
-              <div className="w-full bg-[#1C1917]/10 h-2 rounded-full overflow-hidden">
+              <div className="w-full bg-[#E2E8F0] h-2.5 rounded-full overflow-hidden">
                 <div
                   className={`h-full transition-all duration-500 rounded-full ${
                     hasFreeShipping
-                      ? 'bg-gradient-to-r from-emerald-500 to-emerald-400'
-                      : 'bg-gradient-to-r from-[#7E22CE] to-[#C2410C]'
+                      ? 'bg-[#16A34A]'
+                      : 'bg-gradient-to-r from-[#EAB308] to-[#16A34A]'
                   }`}
                   style={{ width: `${freeShippingProgress}%` }}
                 />
               </div>
 
               {!hasFreeShipping && (
-                <p className="text-[10px] text-[#1C1917]/60 italic">
-                  💡 Ships safely in crush-proof packaging from Florida
+                <p className="text-[10px] text-[#64748B] italic">
+                  📦 Handcrafted in Florida • Ships safely in crush-proof foam
                 </p>
               )}
             </div>
 
             {/* Scrollable Center Area: Cart Items + Upsells */}
-            <div className="flex-1 overflow-y-auto p-4 sm:p-5 space-y-5">
+            <div className="flex-1 overflow-y-auto p-4 sm:p-5 space-y-5 bg-[#FAFAFA]">
               
               {/* If Empty */}
               {cart.length === 0 ? (
                 <div className="text-center py-16 space-y-4">
-                  <div className="w-16 h-16 rounded-full bg-[#FAF0E6] flex items-center justify-center mx-auto text-[#C2410C]">
-                    <ShoppingBag className="w-8 h-8 opacity-60" />
+                  <div className="w-16 h-16 rounded-full bg-[#F0FDFA] flex items-center justify-center mx-auto text-[#0D9488] border border-[#CCFBF1]">
+                    <ShoppingBag className="w-8 h-8 opacity-70" />
                   </div>
-                  <h3 className="font-serif text-lg font-bold text-[#1C1917]">
+                  <h3 className="font-serif text-lg font-bold text-[#1E293B]">
                     Your tote is empty
                   </h3>
-                  <p className="text-xs text-[#1C1917]/60 max-w-xs mx-auto">
-                    Explore our small-batch cakes, waffle cones, and pastel donut wreaths to begin your collection.
+                  <p className="text-xs text-[#64748B] max-w-xs mx-auto">
+                    Explore Vette&apos;s small-batch faux donuts, cake slices, and waffle cones to begin your holiday collection.
                   </p>
                   <button
                     onClick={closeCart}
-                    className="inline-flex items-center gap-1.5 bg-[#2D5A3D] text-white text-xs font-bold px-6 py-2.5 rounded-full hover:bg-[#1E3F2B] transition shadow-md"
+                    className="inline-flex items-center gap-1.5 bg-[#E11D48] text-white text-xs font-bold px-6 py-2.5 rounded-full hover:bg-[#BE123C] transition shadow-md"
                   >
-                    <span>Explore Vette's Shop</span>
+                    <span>Explore Vette&apos;s Shop</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </button>
                 </div>
               ) : (
                 /* Item List */
-                <div className="space-y-3.5">
+                <div className="space-y-3">
                   {cart.map((item) => (
                     <div
                       key={item.product.id}
-                      className="flex gap-3.5 bg-white p-3.5 rounded-2xl border border-[#1C1917]/10 shadow-sm"
+                      className="flex gap-3.5 bg-white p-3.5 rounded-2xl border border-[#E2E8F0] shadow-sm"
                     >
                       {/* Thumbnail */}
-                      <div className="relative w-18 h-22 rounded-xl overflow-hidden bg-stone-100 flex-shrink-0">
+                      <div className="relative w-18 h-22 rounded-xl overflow-hidden bg-stone-50 flex-shrink-0 border border-[#E2E8F0]">
                         <img
                           src={item.product.images[0]}
                           alt={item.product.title}
@@ -232,12 +232,12 @@ export function CartDrawer() {
                       <div className="flex-1 flex flex-col justify-between">
                         <div>
                           <div className="flex items-start justify-between gap-1">
-                            <h4 className="font-serif text-xs font-bold text-[#1C1917] line-clamp-1">
+                            <h4 className="font-serif text-xs font-bold text-[#1E293B] line-clamp-1">
                               {item.product.title}
                             </h4>
                             <button
                               onClick={() => removeFromCart(item.product.id)}
-                              className="text-stone-400 hover:text-rose-600 transition p-0.5"
+                              className="text-stone-400 hover:text-[#E11D48] transition p-0.5"
                               title="Remove item"
                             >
                               <Trash2 className="w-3.5 h-3.5" />
@@ -245,15 +245,15 @@ export function CartDrawer() {
                           </div>
 
                           {item.selectedAddon && (
-                            <p className="text-[10px] text-[#4A5D4E] font-medium line-clamp-1 mt-0.5">
+                            <p className="text-[10px] text-[#0D9488] font-semibold line-clamp-1 mt-0.5">
                               ✨ {item.selectedAddon}
                             </p>
                           )}
 
-                          <p className="text-xs font-bold text-[#7E22CE] mt-1">
+                          <p className="text-xs font-black text-[#E11D48] mt-1">
                             ${(item.product.price * item.quantity).toFixed(2)}
                             {item.quantity > 1 && (
-                              <span className="text-[10px] text-[#1C1917]/50 font-normal ml-1">
+                              <span className="text-[10px] text-[#94A3B8] font-normal ml-1">
                                 (${item.product.price.toFixed(2)} ea)
                               </span>
                             )}
@@ -262,25 +262,25 @@ export function CartDrawer() {
 
                         {/* Quantity Counter */}
                         <div className="flex items-center justify-between pt-2">
-                          <div className="flex items-center border border-[#1C1917]/15 rounded-lg bg-stone-50">
+                          <div className="flex items-center border border-[#CBD5E1] rounded-lg bg-white">
                             <button
                               onClick={() => updateQuantity(item.product.id, item.quantity - 1)}
-                              className="w-6 h-6 flex items-center justify-center text-xs font-bold hover:bg-stone-200 rounded-l-lg transition"
+                              className="w-6 h-6 flex items-center justify-center text-xs font-bold hover:bg-stone-100 rounded-l-lg transition"
                             >
                               <Minus className="w-3 h-3" />
                             </button>
-                            <span className="w-6 text-center text-xs font-bold text-[#1C1917]">
+                            <span className="w-6 text-center text-xs font-bold text-[#1E293B]">
                               {item.quantity}
                             </span>
                             <button
                               onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
-                              className="w-6 h-6 flex items-center justify-center text-xs font-bold hover:bg-stone-200 rounded-r-lg transition"
+                              className="w-6 h-6 flex items-center justify-center text-xs font-bold hover:bg-stone-100 rounded-r-lg transition"
                             >
                               <Plus className="w-3 h-3" />
                             </button>
                           </div>
 
-                          <span className="text-[10px] text-[#4A5D4E] font-medium">
+                          <span className="text-[10px] text-[#15803D] font-bold">
                             Ready to ship
                           </span>
                         </div>
@@ -290,15 +290,15 @@ export function CartDrawer() {
                 </div>
               )}
 
-              {/* 1-Click "Complete the Set" Upsell Section (Baymard AOV Gamification) */}
+              {/* Complete the Set Upsell Section */}
               {cart.length > 0 && (
-                <div className="pt-3 border-t border-[#1C1917]/10 space-y-2.5">
+                <div className="pt-3 border-t border-[#E2E8F0] space-y-2.5">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-serif font-bold text-[#1C1917] flex items-center gap-1.5">
-                      <Sparkles className="w-3.5 h-3.5 text-[#C2410C]" />
+                    <span className="text-xs font-serif font-bold text-[#1E293B] flex items-center gap-1.5">
+                      <Sparkles className="w-3.5 h-3.5 text-[#EAB308]" />
                       <span>Complete Your Holiday Set</span>
                     </span>
-                    <span className="text-[10px] text-[#4A5D4E] font-medium uppercase tracking-wider">
+                    <span className="text-[10px] text-[#0D9488] font-bold uppercase tracking-wider">
                       1-Click Studio Add-On
                     </span>
                   </div>
@@ -311,19 +311,19 @@ export function CartDrawer() {
                       return (
                         <div
                           key={upsell.id}
-                          className="flex items-center justify-between p-2.5 rounded-xl bg-white border border-[#1C1917]/10 hover:border-[#7E22CE]/40 transition group"
+                          className="flex items-center justify-between p-2.5 rounded-xl bg-white border border-[#E2E8F0] hover:border-[#0D9488]/40 transition group shadow-sm"
                         >
                           <div className="flex items-center gap-2.5">
                             <img
                               src={upsell.images[0]}
                               alt=""
-                              className="w-10 h-10 rounded-lg object-cover"
+                              className="w-10 h-10 rounded-lg object-cover border border-[#E2E8F0]"
                             />
                             <div>
-                              <p className="text-xs font-semibold text-[#1C1917] line-clamp-1 group-hover:text-[#7E22CE] transition-colors">
+                              <p className="text-xs font-semibold text-[#1E293B] line-clamp-1 group-hover:text-[#0D9488] transition-colors">
                                 {upsell.title}
                               </p>
-                              <p className="text-[11px] font-bold text-[#7E22CE]">
+                              <p className="text-[11px] font-bold text-[#0F766E]">
                                 +${upsell.price.toFixed(2)}
                               </p>
                             </div>
@@ -331,7 +331,7 @@ export function CartDrawer() {
 
                           <button
                             onClick={() => addToCart(upsell, 1)}
-                            className="bg-[#FAF8F5] hover:bg-[#7E22CE] hover:text-white text-[#1C1917] text-[11px] font-bold px-3 py-1.5 rounded-lg border border-[#1C1917]/15 transition active:scale-95 flex items-center gap-1"
+                            className="bg-[#F0FDFA] hover:bg-[#0D9488] hover:text-white text-[#0D9488] text-[11px] font-bold px-3 py-1.5 rounded-lg border border-[#CCFBF1] transition active:scale-95 flex items-center gap-1"
                           >
                             <Plus className="w-3 h-3" />
                             <span>Add</span>
@@ -347,14 +347,14 @@ export function CartDrawer() {
               {cart.length > 0 && (
                 <div className="pt-2">
                   {discountCode ? (
-                    <div className="flex items-center justify-between p-2.5 bg-emerald-50 border border-emerald-200 rounded-xl text-xs text-emerald-800">
-                      <span className="flex items-center gap-1.5 font-semibold">
+                    <div className="flex items-center justify-between p-2.5 bg-[#DCFCE7] border border-[#BBF7D0] rounded-xl text-xs text-[#15803D]">
+                      <span className="flex items-center gap-1.5 font-bold">
                         <Tag className="w-3.5 h-3.5" />
                         Code &quot;{discountCode}&quot; Applied (-{(discountPercent * 100)}%)
                       </span>
                       <button
                         onClick={removeDiscountCode}
-                        className="text-[11px] text-rose-600 hover:underline font-semibold"
+                        className="text-[11px] text-[#E11D48] hover:underline font-bold"
                       >
                         Remove
                       </button>
@@ -366,11 +366,11 @@ export function CartDrawer() {
                         placeholder="Discount code (try SWEET10)"
                         value={inputCode}
                         onChange={(e) => setInputCode(e.target.value)}
-                        className="flex-1 bg-white border border-[#1C1917]/15 px-3 py-2 rounded-xl text-xs text-[#1C1917] focus:outline-none focus:ring-2 focus:ring-[#7E22CE]/30"
+                        className="flex-1 bg-white border border-[#CBD5E1] px-3 py-2 rounded-xl text-xs text-[#1E293B] focus:outline-none focus:ring-2 focus:ring-[#0D9488]/30"
                       />
                       <button
                         type="submit"
-                        className="bg-[#1C1917] hover:bg-[#2E2825] text-white text-xs font-bold px-4 py-2 rounded-xl transition"
+                        className="bg-[#0D9488] hover:bg-[#0F766E] text-white text-xs font-bold px-4 py-2 rounded-xl transition shadow-sm"
                       >
                         Apply
                       </button>
@@ -381,52 +381,52 @@ export function CartDrawer() {
 
             </div>
 
-            {/* Bottom Drawer Checkout Footer */}
+            {/* Bottom Drawer Checkout Footer (High-Converting Red CTA) */}
             {cart.length > 0 && (
-              <div className="p-5 bg-white border-t border-[#1C1917]/10 space-y-3.5">
+              <div className="p-5 bg-white border-t border-[#E2E8F0] space-y-3.5">
                 
                 {/* Financial Totals Breakdown */}
                 <div className="space-y-1.5 text-xs">
-                  <div className="flex justify-between text-[#1C1917]/70">
+                  <div className="flex justify-between text-[#64748B]">
                     <span>Subtotal:</span>
                     <span>${subtotal.toFixed(2)}</span>
                   </div>
 
                   {discountAmount > 0 && (
-                    <div className="flex justify-between text-emerald-700 font-semibold">
+                    <div className="flex justify-between text-[#15803D] font-bold">
                       <span>Discount ({discountCode}):</span>
                       <span>-${discountAmount.toFixed(2)}</span>
                     </div>
                   )}
 
-                  <div className="flex justify-between text-[#1C1917]/70">
+                  <div className="flex justify-between text-[#64748B]">
                     <span>USPS Priority Shipping:</span>
                     <span>
                       {shipping === 0 ? (
-                        <strong className="text-emerald-700">FREE</strong>
+                        <strong className="text-[#15803D]">FREE</strong>
                       ) : (
                         `$${shipping.toFixed(2)}`
                       )}
                     </span>
                   </div>
 
-                  <div className="flex justify-between text-base font-bold text-[#1C1917] pt-2 border-t border-[#1C1917]/10">
+                  <div className="flex justify-between text-base font-bold text-[#1E293B] pt-2 border-t border-[#E2E8F0]">
                     <span>Estimated Total:</span>
-                    <span className="text-xl text-[#7E22CE]">${finalTotal.toFixed(2)}</span>
+                    <span className="text-xl font-black text-[#E11D48]">${finalTotal.toFixed(2)}</span>
                   </div>
                 </div>
 
-                {/* 1-Click Guest Checkout Button (CRO Baymard Highlight) */}
+                {/* 1-Click Guest Checkout Button (Red Primary Action Click Engine) */}
                 <button
                   onClick={() => setIsCheckoutModalOpen(true)}
-                  className="w-full bg-[#2D5A3D] hover:bg-[#1E3F2B] active:scale-[0.99] text-white py-3.5 px-6 rounded-full font-bold text-sm shadow-xl flex items-center justify-center gap-2 group transition"
+                  className="w-full bg-[#E11D48] hover:bg-[#BE123C] active:scale-[0.99] text-white py-3.5 px-6 rounded-full font-bold text-sm shadow-xl hover:shadow-2xl flex items-center justify-center gap-2 group transition"
                 >
-                  <Sparkles className="w-4 h-4 text-emerald-200" />
+                  <Sparkles className="w-4 h-4 text-[#FEF08A]" />
                   <span>1-Click Fast Guest Checkout</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>
 
-                {/* Payment Brand Trust Badges SVG Underneath */}
+                {/* Trust Badges */}
                 <div className="space-y-1.5 text-center">
                   <div className="flex items-center justify-center gap-3 text-stone-500 text-xs">
                     <span className="font-bold tracking-tight"> Pay</span>
@@ -439,8 +439,8 @@ export function CartDrawer() {
                     <span>•</span>
                     <span className="font-semibold text-pink-600">Klarna</span>
                   </div>
-                  <p className="text-[10px] text-[#4A5D4E] font-medium">
-                    🔒 Zero Marketplace Fees • Ships from Florida in Crush-Proof Boxes
+                  <p className="text-[10px] text-[#15803D] font-bold">
+                    🌿 Zero Marketplace Fees • 100% Direct Studio Purchase
                   </p>
                 </div>
 

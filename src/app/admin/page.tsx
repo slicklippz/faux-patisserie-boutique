@@ -324,23 +324,23 @@ export default function AdminPage() {
   // Login Screen if not authenticated
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen bg-[#FAF8F5] flex items-center justify-center p-4">
-        <div className="w-full max-w-md bg-white p-8 rounded-3xl shadow-xl border border-[#1C1917]/10 space-y-6">
+      <div className="min-h-screen bg-stone-50 flex items-center justify-center p-4">
+        <div className="w-full max-w-md bg-white p-8 rounded-3xl shadow-xl border border-stone-200 space-y-6">
           <div className="text-center space-y-2">
-            <div className="w-12 h-12 rounded-full bg-[#FCE7F3] flex items-center justify-center text-[#7E22CE] mx-auto">
+            <div className="w-12 h-12 rounded-full bg-teal-50 flex items-center justify-center text-teal-600 mx-auto">
               <Lock className="w-6 h-6" />
             </div>
-            <h1 className="font-serif text-2xl font-bold text-[#1C1917]">
+            <h1 className="font-serif text-2xl font-bold text-stone-900">
               Vette's Crafting Studio
             </h1>
-            <p className="text-xs text-[#1C1917]/60">
+            <p className="text-xs text-stone-500">
               Enter passcode to manage prices, inventory & photos.
             </p>
           </div>
 
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
-              <label className="block text-xs font-bold text-[#1C1917] mb-1">
+              <label className="block text-xs font-bold text-stone-800 mb-1">
                 Studio Passcode
               </label>
               <input
@@ -348,7 +348,7 @@ export default function AdminPage() {
                 placeholder="Enter passcode (default: patisserie2026)"
                 value={passcode}
                 onChange={(e) => setPasscode(e.target.value)}
-                className="w-full bg-[#FAF8F5] border border-[#1C1917]/20 rounded-xl px-4 py-3 text-sm text-[#1C1917] focus:outline-none focus:ring-2 focus:ring-[#7E22CE]"
+                className="w-full bg-white border border-stone-300 rounded-xl px-4 py-3 text-sm text-stone-900 focus:outline-none focus:ring-2 focus:ring-teal-600"
                 autoFocus
               />
               {passcodeError && (
@@ -360,16 +360,16 @@ export default function AdminPage() {
 
             <button
               type="submit"
-              className="w-full bg-[#2D5A3D] hover:bg-[#1E3F2B] text-white py-3 rounded-full font-bold text-xs shadow-md transition"
+              className="w-full bg-[#E11D48] hover:bg-[#BE123C] text-white py-3 rounded-full font-bold text-xs shadow-md transition"
             >
               Enter Studio Dashboard
             </button>
           </form>
 
-          <div className="pt-4 border-t border-[#1C1917]/10 text-center">
+          <div className="pt-4 border-t border-stone-100 text-center">
             <Link
               href="/"
-              className="inline-flex items-center gap-1.5 text-xs text-[#1C1917]/60 hover:text-[#1C1917]"
+              className="inline-flex items-center gap-1.5 text-xs text-stone-500 hover:text-stone-900"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
               <span>Back to Storefront</span>
@@ -388,28 +388,28 @@ export default function AdminPage() {
     .reduce((sum, p) => sum + p.price * p.stockCount, 0);
 
   return (
-    <div className="min-h-screen bg-[#FAF8F5] text-[#1C1917]">
+    <div className="min-h-screen bg-white text-stone-900">
       
       {/* Studio Header Bar */}
-      <header className="sticky top-0 z-30 bg-white border-b border-[#1C1917]/10 shadow-sm">
+      <header className="sticky top-0 z-30 bg-white border-b border-stone-200 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-wrap items-center justify-between gap-4">
           
           <div className="flex items-center gap-3">
             <Link
               href="/"
-              className="p-2 rounded-xl bg-stone-100 hover:bg-stone-200 text-[#1C1917] transition"
+              className="p-2 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-900 transition"
               title="View Public Store"
             >
               <ArrowLeft className="w-4 h-4" />
             </Link>
             <div>
-              <h1 className="font-serif text-xl sm:text-2xl font-bold text-[#1C1917] flex items-center gap-2">
-                <span>Studio Management Suite</span>
-                <span className="text-[10px] bg-[#4A5D4E]/10 text-[#4A5D4E] px-2 py-0.5 rounded-full font-sans uppercase font-bold tracking-wider">
-                  Live Editing
+              <h1 className="font-serif text-xl sm:text-2xl font-bold text-stone-900 flex items-center gap-2">
+                <span>Vette's Crafting Studio</span>
+                <span className="text-[10px] bg-teal-50 text-teal-800 border border-teal-200 px-2 py-0.5 rounded-full font-sans uppercase font-bold tracking-wider">
+                  Live Management
                 </span>
               </h1>
-              <p className="text-xs text-[#1C1917]/60">
+              <p className="text-xs text-stone-500">
                 Single-click toggle stock, edit prices, and manage social proof archive
               </p>
             </div>
@@ -426,7 +426,7 @@ export default function AdminPage() {
             <Link
               href="/"
               target="_blank"
-              className="hidden sm:inline-flex items-center gap-1.5 text-xs font-semibold bg-stone-100 hover:bg-stone-200 px-3.5 py-2 rounded-full transition"
+              className="hidden sm:inline-flex items-center gap-1.5 text-xs font-semibold bg-stone-100 hover:bg-stone-200 text-stone-800 px-3.5 py-2 rounded-full transition"
             >
               <span>View Live Store</span>
               <ExternalLink className="w-3 h-3" />
@@ -434,7 +434,7 @@ export default function AdminPage() {
 
             <button
               onClick={() => openEditModal()}
-              className="inline-flex items-center gap-1.5 bg-[#7E22CE] hover:bg-[#6B21A8] text-white px-4 py-2 rounded-full text-xs font-bold shadow transition"
+              className="inline-flex items-center gap-1.5 bg-[#E11D48] hover:bg-[#BE123C] text-white px-4 py-2 rounded-full text-xs font-bold shadow transition"
             >
               <Plus className="w-4 h-4" />
               <span>Add New Confection</span>
@@ -457,17 +457,17 @@ export default function AdminPage() {
         
         {/* KPI Summary Cards */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-          <div className="bg-white p-5 rounded-2xl border border-[#1C1917]/10 shadow-sm">
-            <span className="text-xs font-medium text-[#1C1917]/60 uppercase tracking-wider">
+          <div className="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
+            <span className="text-xs font-medium text-stone-500 uppercase tracking-wider">
               Total Pieces
             </span>
-            <p className="font-serif text-2xl font-bold text-[#1C1917] mt-1">
+            <p className="font-serif text-2xl font-bold text-stone-900 mt-1">
               {products.length}
             </p>
-            <p className="text-[11px] text-[#4A5D4E] mt-0.5">In boutique database</p>
+            <p className="text-[11px] text-teal-700 mt-0.5">In boutique database</p>
           </div>
 
-          <div className="bg-white p-5 rounded-2xl border border-[#1C1917]/10 shadow-sm">
+          <div className="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
             <span className="text-xs font-medium text-emerald-800 uppercase tracking-wider">
               Active In Stock
             </span>
@@ -477,17 +477,17 @@ export default function AdminPage() {
             <p className="text-[11px] text-emerald-600 mt-0.5">Purchasable now</p>
           </div>
 
-          <div className="bg-white p-5 rounded-2xl border border-[#1C1917]/10 shadow-sm">
-            <span className="text-xs font-medium text-purple-800 uppercase tracking-wider">
+          <div className="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
+            <span className="text-xs font-medium text-stone-600 uppercase tracking-wider">
               Sold Proof Archive
             </span>
-            <p className="font-serif text-2xl font-bold text-[#7E22CE] mt-1">
+            <p className="font-serif text-2xl font-bold text-rose-600 mt-1">
               {soldCount}
             </p>
-            <p className="text-[11px] text-purple-600 mt-0.5">Social proof display</p>
+            <p className="text-[11px] text-stone-500 mt-0.5">Social proof display</p>
           </div>
 
-          <div className="bg-white p-5 rounded-2xl border border-[#1C1917]/10 shadow-sm">
+          <div className="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
             <span className="text-xs font-medium text-amber-800 uppercase tracking-wider">
               Inventory Value
             </span>
@@ -499,10 +499,10 @@ export default function AdminPage() {
         </div>
 
         {/* Database & Sync Toolbar */}
-        <div className="flex flex-wrap items-center justify-between gap-3 p-4 bg-white rounded-2xl border border-[#1C1917]/10 shadow-sm text-xs">
+        <div className="flex flex-wrap items-center justify-between gap-3 p-4 bg-white rounded-2xl border border-stone-200 shadow-sm text-xs">
           <div className="flex items-center gap-2">
-            <span className="font-bold text-[#1C1917]">Zero-Code Product Layer:</span>
-            <span className="text-[#1C1917]/70">
+            <span className="font-bold text-stone-900">Zero-Code Product Layer:</span>
+            <span className="text-stone-600">
               Updates write directly to <code className="bg-stone-100 px-1.5 py-0.5 rounded text-[11px]">data/products.json</code>
             </span>
           </div>
@@ -510,15 +510,15 @@ export default function AdminPage() {
           <div className="flex items-center gap-2">
             <button
               onClick={handleExportJSON}
-              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-[#1C1917]/20 hover:bg-stone-50 font-semibold"
+              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-stone-200 hover:bg-stone-50 font-semibold"
             >
-              <Download className="w-3.5 h-3.5 text-[#7E22CE]" />
+              <Download className="w-3.5 h-3.5 text-teal-600" />
               <span>Export JSON</span>
             </button>
 
             <button
               onClick={handleResetToSeed}
-              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-[#1C1917]/20 hover:bg-stone-50 font-semibold text-stone-600"
+              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-stone-200 hover:bg-stone-50 font-semibold text-stone-600"
             >
               <RotateCcw className="w-3.5 h-3.5" />
               <span>Restore 8 Seed Listings</span>
@@ -527,30 +527,30 @@ export default function AdminPage() {
         </div>
 
         {/* Product Management Table / Cards */}
-        <div className="bg-white rounded-3xl border border-[#1C1917]/10 shadow-sm overflow-hidden">
+        <div className="bg-white rounded-3xl border border-stone-200 shadow-sm overflow-hidden">
           
-          <div className="p-5 border-b border-[#1C1917]/10 flex items-center justify-between">
-            <h2 className="font-serif text-lg font-bold text-[#1C1917]">
+          <div className="p-5 border-b border-stone-200 flex items-center justify-between">
+            <h2 className="font-serif text-lg font-bold text-stone-900">
               Current Listings ({products.length})
             </h2>
-            <span className="text-xs text-[#1C1917]/60">
+            <span className="text-xs text-stone-500">
               Click &quot;SOLD&quot; toggle to immediately shift an item to the Social Proof Archive
             </span>
           </div>
 
-          <div className="divide-y divide-[#1C1917]/10">
+          <div className="divide-y divide-stone-200">
             {products.map((p) => (
               <div
                 key={p.id}
-                className="p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 hover:bg-[#FAF8F5]/60 transition"
+                className="p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 hover:bg-stone-50/60 transition"
               >
                 
                 {/* Thumbnail & Title */}
                 <div className="flex items-center gap-4 flex-1">
-                  <div className="relative w-16 h-20 rounded-xl overflow-hidden bg-stone-100 flex-shrink-0 border border-[#1C1917]/10">
+                  <div className="relative w-16 h-20 rounded-xl overflow-hidden bg-stone-100 flex-shrink-0 border border-stone-200">
                     <img src={p.images[0]} alt="" className="w-full h-full object-cover" />
                     {p.isSold && (
-                      <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
+                      <div className="absolute inset-0 bg-stone-900/60 flex items-center justify-center">
                         <span className="text-[9px] font-black text-white uppercase tracking-wider">SOLD</span>
                       </div>
                     )}
@@ -558,25 +558,25 @@ export default function AdminPage() {
 
                   <div className="space-y-1">
                     <div className="flex items-center gap-2">
-                      <span className="text-[10px] uppercase font-bold tracking-wider text-[#4A5D4E] bg-stone-100 px-2 py-0.5 rounded">
+                      <span className="text-[10px] uppercase font-bold tracking-wider text-teal-800 bg-teal-50 px-2 py-0.5 rounded border border-teal-200">
                         {p.category}
                       </span>
                       {p.isSold ? (
-                        <span className="text-[10px] font-bold text-rose-700 bg-rose-50 px-2 py-0.5 rounded">
+                        <span className="text-[10px] font-bold text-rose-700 bg-rose-50 px-2 py-0.5 rounded border border-rose-200">
                           Archived Piece
                         </span>
                       ) : (
-                        <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
+                        <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                           Live On Store
                         </span>
                       )}
                     </div>
 
-                    <h3 className="font-serif text-base font-bold text-[#1C1917]">
+                    <h3 className="font-serif text-base font-bold text-stone-900">
                       {p.title}
                     </h3>
 
-                    <p className="text-xs text-[#1C1917]/60 line-clamp-1">
+                    <p className="text-xs text-stone-500 line-clamp-1">
                       {p.subtitle} • {p.materials.length} Materials listed
                     </p>
                   </div>
@@ -586,18 +586,18 @@ export default function AdminPage() {
                 <div className="flex flex-wrap items-center gap-4 w-full md:w-auto justify-between md:justify-end">
                   
                   {/* Price input */}
-                  <div className="flex items-center gap-1 bg-stone-50 border border-[#1C1917]/15 rounded-xl px-2 py-1">
-                    <span className="text-xs text-[#1C1917]/60 font-bold">$</span>
+                  <div className="flex items-center gap-1 bg-stone-50 border border-stone-300 rounded-xl px-2 py-1">
+                    <span className="text-xs text-stone-500 font-bold">$</span>
                     <input
                       type="number"
                       value={p.price}
                       onChange={(e) => updatePrice(p.id, parseFloat(e.target.value))}
-                      className="w-14 bg-transparent text-xs font-bold text-[#1C1917] focus:outline-none"
+                      className="w-14 bg-transparent text-xs font-bold text-stone-900 focus:outline-none"
                     />
                   </div>
 
                   {/* Stock Stepper */}
-                  <div className="flex items-center border border-[#1C1917]/15 rounded-xl bg-stone-50 overflow-hidden">
+                  <div className="flex items-center border border-stone-300 rounded-xl bg-stone-50 overflow-hidden">
                     <button
                       onClick={() => updateStock(p.id, -1)}
                       className="px-2 py-1 hover:bg-stone-200 text-xs font-bold"
@@ -605,7 +605,7 @@ export default function AdminPage() {
                     >
                       -
                     </button>
-                    <span className="px-2 text-xs font-bold text-[#1C1917]">
+                    <span className="px-2 text-xs font-bold text-stone-900">
                       {p.stockCount} in stock
                     </span>
                     <button
@@ -643,7 +643,7 @@ export default function AdminPage() {
                   <div className="flex items-center gap-1">
                     <button
                       onClick={() => openEditModal(p)}
-                      className="p-2 text-stone-600 hover:text-[#7E22CE] hover:bg-stone-100 rounded-lg transition"
+                      className="p-2 text-stone-600 hover:text-teal-700 hover:bg-stone-100 rounded-lg transition"
                       title="Edit Details"
                     >
                       <Edit3 className="w-4 h-4" />
@@ -671,18 +671,18 @@ export default function AdminPage() {
       {/* Edit / Create Product Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 z-50 overflow-y-auto">
-          <div className="fixed inset-0 bg-[#1C1917]/70 backdrop-blur-sm" onClick={() => setIsModalOpen(false)} />
+          <div className="fixed inset-0 bg-stone-900/60 backdrop-blur-sm" onClick={() => setIsModalOpen(false)} />
 
           <div className="flex min-h-full items-center justify-center p-4">
-            <div className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-[#1C1917]/10 overflow-hidden my-8 p-6 sm:p-8 space-y-6">
+            <div className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-stone-200 overflow-hidden my-8 p-6 sm:p-8 space-y-6">
               
-              <div className="flex items-center justify-between pb-4 border-b border-[#1C1917]/10">
-                <h3 className="font-serif text-2xl font-bold text-[#1C1917]">
+              <div className="flex items-center justify-between pb-4 border-b border-stone-200">
+                <h3 className="font-serif text-2xl font-bold text-stone-900">
                   {editingProduct ? 'Edit Artisan Confection' : 'Add New Handcrafted Confection'}
                 </h3>
                 <button
                   onClick={() => setIsModalOpen(false)}
-                  className="w-8 h-8 rounded-full hover:bg-stone-100 flex items-center justify-center text-[#1C1917]/60"
+                  className="w-8 h-8 rounded-full hover:bg-stone-100 flex items-center justify-center text-stone-500"
                 >
                   ✕
                 </button>
@@ -692,61 +692,61 @@ export default function AdminPage() {
                 
                 {/* Title & Subtitle */}
                 <div className="space-y-1">
-                  <label className="font-bold text-[#1C1917]">Product Title</label>
+                  <label className="font-bold text-stone-900">Product Title</label>
                   <input
                     type="text"
                     required
                     value={formTitle}
                     onChange={(e) => setFormTitle(e.target.value)}
                     placeholder="e.g. Lavender Frosted Gift Box & Gingerbread Topper"
-                    className="w-full bg-[#FAF8F5] border border-[#1C1917]/20 rounded-xl px-3 py-2 text-[#1C1917] focus:outline-none focus:ring-2 focus:ring-[#7E22CE]"
+                    className="w-full bg-white border border-stone-300 rounded-xl px-3 py-2 text-stone-900 focus:outline-none focus:ring-2 focus:ring-teal-600"
                   />
                 </div>
 
                 <div className="space-y-1">
-                  <label className="font-bold text-[#1C1917]">Subtitle / Quick Pitch</label>
+                  <label className="font-bold text-stone-900">Subtitle / Quick Pitch</label>
                   <input
                     type="text"
                     required
                     value={formSubtitle}
                     onChange={(e) => setFormSubtitle(e.target.value)}
                     placeholder="e.g. Realistic faux gateau slice with hand-whipped piped frosting"
-                    className="w-full bg-[#FAF8F5] border border-[#1C1917]/20 rounded-xl px-3 py-2 text-[#1C1917] focus:outline-none focus:ring-2 focus:ring-[#7E22CE]"
+                    className="w-full bg-white border border-stone-300 rounded-xl px-3 py-2 text-stone-900 focus:outline-none focus:ring-2 focus:ring-teal-600"
                   />
                 </div>
 
                 {/* Price, Compare At, Category */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   <div className="space-y-1">
-                    <label className="font-bold text-[#1C1917]">Price ($)</label>
+                    <label className="font-bold text-stone-900">Price ($)</label>
                     <input
                       type="number"
                       required
                       step="any"
                       value={formPrice}
                       onChange={(e) => setFormPrice(parseFloat(e.target.value))}
-                      className="w-full bg-[#FAF8F5] border border-[#1C1917]/20 rounded-xl px-3 py-2 text-[#1C1917] focus:outline-none focus:ring-2 focus:ring-[#7E22CE]"
+                      className="w-full bg-white border border-stone-300 rounded-xl px-3 py-2 text-stone-900 focus:outline-none focus:ring-2 focus:ring-teal-600"
                     />
                   </div>
 
                   <div className="space-y-1">
-                    <label className="font-bold text-[#1C1917]">Compare-At Price ($)</label>
+                    <label className="font-bold text-stone-900">Compare-At Price ($)</label>
                     <input
                       type="number"
                       step="any"
                       value={formCompareAt ?? ''}
                       onChange={(e) => setFormCompareAt(e.target.value ? parseFloat(e.target.value) : undefined)}
                       placeholder="Optional"
-                      className="w-full bg-[#FAF8F5] border border-[#1C1917]/20 rounded-xl px-3 py-2 text-[#1C1917] focus:outline-none focus:ring-2 focus:ring-[#7E22CE]"
+                      className="w-full bg-white border border-stone-300 rounded-xl px-3 py-2 text-stone-900 focus:outline-none focus:ring-2 focus:ring-teal-600"
                     />
                   </div>
 
                   <div className="space-y-1">
-                    <label className="font-bold text-[#1C1917]">Category</label>
+                    <label className="font-bold text-stone-900">Category</label>
                     <select
                       value={formCategory}
                       onChange={(e) => setFormCategory(e.target.value as any)}
-                      className="w-full bg-[#FAF8F5] border border-[#1C1917]/20 rounded-xl px-3 py-2 text-[#1C1917] focus:outline-none focus:ring-2 focus:ring-[#7E22CE]"
+                      className="w-full bg-white border border-stone-300 rounded-xl px-3 py-2 text-stone-900 focus:outline-none focus:ring-2 focus:ring-teal-600"
                     >
                       <option value="Cake Slices & Gift Boxes">Cake Slices & Gift Boxes</option>
                       <option value="Donut Wreaths">Donut Wreaths</option>
@@ -759,91 +759,91 @@ export default function AdminPage() {
                 {/* Stock & Scarcity Badge */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div className="space-y-1">
-                    <label className="font-bold text-[#1C1917]">Studio Stock Units</label>
+                    <label className="font-bold text-stone-900">Studio Stock Units</label>
                     <input
                       type="number"
                       min={0}
                       value={formStockCount}
                       onChange={(e) => setFormStockCount(parseInt(e.target.value))}
-                      className="w-full bg-[#FAF8F5] border border-[#1C1917]/20 rounded-xl px-3 py-2 text-[#1C1917] focus:outline-none focus:ring-2 focus:ring-[#7E22CE]"
+                      className="w-full bg-white border border-stone-300 rounded-xl px-3 py-2 text-stone-900 focus:outline-none focus:ring-2 focus:ring-teal-600"
                     />
                   </div>
 
                   <div className="space-y-1">
-                    <label className="font-bold text-[#1C1917]">Scarcity Badge Pill</label>
+                    <label className="font-bold text-stone-900">Scarcity Badge Pill</label>
                     <input
                       type="text"
                       value={formScarcityBadge}
                       onChange={(e) => setFormScarcityBadge(e.target.value)}
                       placeholder="e.g. Only 1 Left, Small Batch (Set of 4)"
-                      className="w-full bg-[#FAF8F5] border border-[#1C1917]/20 rounded-xl px-3 py-2 text-[#1C1917] focus:outline-none focus:ring-2 focus:ring-[#7E22CE]"
+                      className="w-full bg-white border border-stone-300 rounded-xl px-3 py-2 text-stone-900 focus:outline-none focus:ring-2 focus:ring-teal-600"
                     />
                   </div>
                 </div>
 
                 {/* Description */}
                 <div className="space-y-1">
-                  <label className="font-bold text-[#1C1917]">Full Story & Description</label>
+                  <label className="font-bold text-stone-900">Full Story & Description</label>
                   <textarea
                     rows={3}
                     value={formDescription}
                     onChange={(e) => setFormDescription(e.target.value)}
-                    className="w-full bg-[#FAF8F5] border border-[#1C1917]/20 rounded-xl p-3 text-[#1C1917] focus:outline-none focus:ring-2 focus:ring-[#7E22CE]"
+                    className="w-full bg-white border border-stone-300 rounded-xl p-3 text-stone-900 focus:outline-none focus:ring-2 focus:ring-teal-600"
                   />
                 </div>
 
                 {/* Materials & Dimensions */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div className="space-y-1">
-                    <label className="font-bold text-[#1C1917]">Dimensions & Weight</label>
+                    <label className="font-bold text-stone-900">Dimensions & Weight</label>
                     <input
                       type="text"
                       value={formDimensions}
                       onChange={(e) => setFormDimensions(e.target.value)}
-                      className="w-full bg-[#FAF8F5] border border-[#1C1917]/20 rounded-xl px-3 py-2 text-[#1C1917]"
+                      className="w-full bg-white border border-stone-300 rounded-xl px-3 py-2 text-stone-900"
                     />
                   </div>
 
                   <div className="space-y-1">
-                    <label className="font-bold text-[#1C1917]">Materials (Comma separated)</label>
+                    <label className="font-bold text-stone-900">Materials (Comma separated)</label>
                     <input
                       type="text"
                       value={formMaterials}
                       onChange={(e) => setFormMaterials(e.target.value)}
-                      className="w-full bg-[#FAF8F5] border border-[#1C1917]/20 rounded-xl px-3 py-2 text-[#1C1917]"
+                      className="w-full bg-white border border-stone-300 rounded-xl px-3 py-2 text-stone-900"
                     />
                   </div>
                 </div>
 
                 {/* Styling Tip */}
                 <div className="space-y-1">
-                  <label className="font-bold text-[#1C1917]">Styling & Tree Placement Tip</label>
+                  <label className="font-bold text-stone-900">Styling & Tree Placement Tip</label>
                   <input
                     type="text"
                     value={formStylingTip}
                     onChange={(e) => setFormStylingTip(e.target.value)}
-                    className="w-full bg-[#FAF8F5] border border-[#1C1917]/20 rounded-xl px-3 py-2 text-[#1C1917]"
+                    className="w-full bg-white border border-stone-300 rounded-xl px-3 py-2 text-stone-900"
                   />
                 </div>
 
                 {/* Image Gallery Management */}
-                <div className="space-y-2 pt-2 border-t border-[#1C1917]/10">
-                  <label className="font-bold text-[#1C1917] block">
+                <div className="space-y-2 pt-2 border-t border-stone-200">
+                  <label className="font-bold text-stone-900 block">
                     Product Photography Gallery ({formImages.length} images)
                   </label>
 
                   <div className="flex gap-2">
                     <input
                       type="url"
-                      placeholder="Paste image URL (https://...)"
+                      placeholder="Paste image URL (/products/...)"
                       value={newImageUrl}
                       onChange={(e) => setNewImageUrl(e.target.value)}
-                      className="flex-1 bg-[#FAF8F5] border border-[#1C1917]/20 rounded-xl px-3 py-2 text-[#1C1917]"
+                      className="flex-1 bg-white border border-stone-300 rounded-xl px-3 py-2 text-stone-900"
                     />
                     <button
                       type="button"
                       onClick={handleAddImage}
-                      className="bg-[#1C1917] text-white px-4 py-2 rounded-xl font-bold"
+                      className="bg-stone-900 hover:bg-stone-800 text-white px-4 py-2 rounded-xl font-bold"
                     >
                       Add Photo
                     </button>
@@ -851,12 +851,12 @@ export default function AdminPage() {
 
                   <div className="flex items-center gap-3 overflow-x-auto py-2">
                     {formImages.map((img, idx) => (
-                      <div key={idx} className="relative w-20 h-24 rounded-xl overflow-hidden border flex-shrink-0 group">
+                      <div key={idx} className="relative w-20 h-24 rounded-xl overflow-hidden border border-stone-200 flex-shrink-0 group">
                         <img src={img} alt="" className="w-full h-full object-cover" />
                         <button
                           type="button"
                           onClick={() => handleRemoveImage(idx)}
-                          className="absolute top-1 right-1 bg-red-600 text-white rounded-full w-5 h-5 flex items-center justify-center text-[10px]"
+                          className="absolute top-1 right-1 bg-rose-600 text-white rounded-full w-5 h-5 flex items-center justify-center text-[10px]"
                         >
                           ✕
                         </button>
@@ -866,18 +866,18 @@ export default function AdminPage() {
                 </div>
 
                 {/* Submit */}
-                <div className="pt-4 flex items-center justify-end gap-3 border-t border-[#1C1917]/10">
+                <div className="pt-4 flex items-center justify-end gap-3 border-t border-stone-200">
                   <button
                     type="button"
                     onClick={() => setIsModalOpen(false)}
-                    className="px-4 py-2 rounded-full border border-[#1C1917]/20 font-bold hover:bg-stone-50"
+                    className="px-4 py-2 rounded-full border border-stone-300 font-bold hover:bg-stone-50"
                   >
                     Cancel
                   </button>
 
                   <button
                     type="submit"
-                    className="bg-[#7E22CE] hover:bg-[#6B21A8] text-white px-6 py-2 rounded-full font-bold shadow-md"
+                    className="bg-[#E11D48] hover:bg-[#BE123C] text-white px-6 py-2 rounded-full font-bold shadow-md transition"
                   >
                     Save & Update Live Site
                   </button>

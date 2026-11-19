@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Sparkles, Heart, ShieldCheck, Mail, ArrowRight, Leaf } from 'lucide-react';
 import { useCart } from '@/lib/cart-context';
+import { Check } from 'lucide-react';
 
 export function Footer() {
   const { showToast } = useCart();
@@ -14,138 +14,181 @@ export function Footer() {
     e.preventDefault();
     if (email.trim()) {
       setSubscribed(true);
-      showToast('You are on Vette\'s weekly drop list!');
+      showToast('Thank you for subscribing to weekly drops!');
     }
   };
 
   return (
-    <footer className="bg-[#1E3F2B] text-[#FAF8F5] pt-16 pb-12 border-t border-emerald-900 font-sans">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-emerald-800/60">
-          {/* Brand Info */}
-          <div className="lg:col-span-2 space-y-4">
-            <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center text-[#2D5A3D]">
-                <Leaf className="w-4 h-4 fill-current" />
-              </div>
-              <span className="font-serif text-2xl font-bold tracking-tight text-white">
-                Vette&apos;s Crafting
-              </span>
-            </div>
-
-            <p className="text-xs text-emerald-100/80 max-w-sm leading-relaxed">
-              A small, handmade hobby dedicated to bringing you unique, crafted pieces that blend creativity with quality. Every item is made by hand with joy to add a personal touch to your home.
+    <footer className="bg-[#F0FDFA] border-t border-[#99F6E4] text-stone-700 font-sans">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-10">
+        
+        {/* 3-Column Footer */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 pb-12 border-b border-[#99F6E4]">
+          
+          {/* Column 1: Brand Info & Social Media Links */}
+          <div className="space-y-4">
+            <h4 className="font-serif text-lg font-bold text-[#0F766E] tracking-normal">
+              Vette&apos;s Crafting
+            </h4>
+            <p className="text-xs text-stone-600 leading-relaxed max-w-sm">
+              Custom air dry foam clay faux-bake ornaments, holiday decor, and collectible displays.
             </p>
-
-            <div className="flex items-center gap-2 pt-1 text-xs text-emerald-300">
-              <Heart className="w-4 h-4 text-rose-400 fill-current" />
-              <span>&ldquo;Thank you for joining our creative community!&rdquo; — Vette</span>
+            
+            {/* Social Media Links */}
+            <div className="flex items-center gap-3 pt-1 text-xs text-[#0F766E]">
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noreferrer"
+                className="hover:text-[#0D9488] transition font-semibold"
+              >
+                Facebook
+              </a>
+              <span>•</span>
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noreferrer"
+                className="hover:text-[#0D9488] transition font-semibold"
+              >
+                Instagram
+              </a>
+              <span>•</span>
+              <a
+                href="https://youtube.com"
+                target="_blank"
+                rel="noreferrer"
+                className="hover:text-[#0D9488] transition font-semibold"
+              >
+                YouTube
+              </a>
+              <span>•</span>
+              <a
+                href="https://tiktok.com"
+                target="_blank"
+                rel="noreferrer"
+                className="hover:text-[#0D9488] transition font-semibold"
+              >
+                TikTok
+              </a>
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Column 2: Info & Policies */}
           <div className="space-y-3">
-            <h4 className="font-serif text-sm font-bold text-white uppercase tracking-wider">
-              Explore The Shop
+            <h4 className="font-serif text-lg font-bold text-[#0F766E] tracking-normal">
+              Info
             </h4>
-            <ul className="space-y-2 text-xs text-emerald-100/70">
+            <ul className="space-y-2 text-xs text-stone-600">
               <li>
-                <a href="#intro" className="hover:text-white transition">
-                  Meet Vette &amp; Our Story
+                <a href="#collection" className="hover:text-[#0D9488] transition">
+                  Air Dry Foam Clay Collection
                 </a>
               </li>
               <li>
-                <a href="#catalog" className="hover:text-white transition">
-                  Handcrafted Confections
+                <a href="#custom" className="hover:text-[#BE123C] transition text-[#E11D48] font-bold">
+                  Custom Orders &amp; Inquiries
                 </a>
               </li>
               <li>
-                <a href="#craft" className="hover:text-white transition">
-                  Process &amp; Tutorial Credits
-                </a>
+                <span className="text-stone-500">Crush-Proof Safe Packaging</span>
               </li>
               <li>
-                <a href="#reviews" className="hover:text-white transition">
-                  Collector Reviews
-                </a>
+                <span className="text-stone-500">Free Shipping on Orders $75+</span>
               </li>
               <li>
-                <a href="#sold-archive" className="hover:text-white transition">
-                  Sold Out Archive
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Policies & Custom Orders */}
-          <div className="space-y-3">
-            <h4 className="font-serif text-sm font-bold text-white uppercase tracking-wider">
-              Custom &amp; Policies
-            </h4>
-            <ul className="space-y-2 text-xs text-emerald-100/70">
-              <li>
-                <a href="#custom" className="hover:text-white transition font-semibold text-emerald-300">
-                  Message for Custom Order
-                </a>
-              </li>
-              <li>Crush-Proof Packaging Standard</li>
-              <li>Free Shipping on Orders $75+</li>
-              <li>Ships with USPS Priority Tracking</li>
-              <li>Non-Edible Heirloom Care</li>
-              <li>
-                <Link href="/admin" className="text-amber-300 hover:text-amber-200 underline font-medium">
-                  Studio Owner Dashboard
+                <Link href="/admin" className="text-[#0D9488] hover:underline font-bold">
+                  Studio Admin
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Weekly Drop Notifications */}
+          {/* Column 3: Subscribe to our emails */}
           <div className="space-y-3">
-            <h4 className="font-serif text-sm font-bold text-white uppercase tracking-wider">
-              Weekly Design Drops
+            <h4 className="font-serif text-lg font-bold text-[#0F766E] tracking-normal">
+              Subscribe to our emails
             </h4>
-            <p className="text-xs text-emerald-100/80 leading-relaxed">
-              New designs are posted weekly! Subscribe to get preview photos before batches go live.
+            <p className="text-xs text-stone-600">
+              Be the first to see new weekly air dry foam clay designs and holiday drops.
             </p>
 
             {subscribed ? (
-              <div className="p-3 rounded-xl bg-emerald-900 border border-emerald-500/40 text-xs text-emerald-200">
-                ✓ You are subscribed to Vette&apos;s weekly drops!
+              <div className="p-3 bg-[#16A34A] text-white rounded-lg text-xs font-semibold flex items-center gap-1.5">
+                <Check className="w-4 h-4" />
+                <span>You are subscribed to weekly drop alerts!</span>
               </div>
             ) : (
-              <form onSubmit={handleSubscribe} className="space-y-2">
+              <form onSubmit={handleSubscribe} className="space-y-2.5">
                 <div className="relative">
                   <input
                     type="email"
                     required
-                    placeholder="Enter email for weekly drops"
+                    placeholder="Email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full bg-emerald-950/70 border border-emerald-700/60 rounded-full px-3.5 py-2 text-xs text-white placeholder-emerald-300/40 focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                    className="w-full bg-white border border-[#5EEAD4] rounded-md px-3.5 py-2.5 text-xs text-stone-900 focus:outline-none focus:ring-2 focus:ring-[#0D9488] placeholder:text-stone-400"
                   />
                   <button
                     type="submit"
-                    className="absolute right-1 top-1/2 -translate-y-1/2 bg-[#2D5A3D] hover:bg-[#1E3F2B] text-white p-1.5 rounded-full"
-                    aria-label="Subscribe"
+                    className="absolute right-1.5 top-1.5 bottom-1.5 px-3.5 bg-[#E11D48] hover:bg-[#BE123C] text-white rounded text-xs font-bold uppercase tracking-wider transition"
                   >
-                    <ArrowRight className="w-3.5 h-3.5" />
+                    Subscribe
                   </button>
                 </div>
               </form>
             )}
+
+            <p className="text-[11px] text-stone-500 pt-1">
+              Follow on Shop Pay • Direct 0% Platform Fee Checkout
+            </p>
           </div>
+
         </div>
 
-        {/* Bottom copyright */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-emerald-200/60">
-          <p>© {new Date().getFullYear()} Vette&apos;s Crafting. All rights reserved.</p>
-          <p className="flex items-center gap-1.5">
-            <span>Made by hand with joy in Florida</span>
-            <Heart className="w-3.5 h-3.5 text-rose-400 fill-current" />
-            <span>• Direct Zero-Fee Checkout</span>
-          </p>
+        {/* Bottom Bar: Country / Currency Dropdown & Payment Badges */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-600">
+          
+          {/* Country / Currency */}
+          <div className="flex items-center gap-2">
+            <label htmlFor="country-select" className="text-[11px] text-[#0F766E] uppercase tracking-wider font-bold">
+              Country/region
+            </label>
+            <select
+              id="country-select"
+              defaultValue="USD"
+              className="bg-white border border-[#99F6E4] rounded px-2.5 py-1 text-xs text-stone-800 font-medium focus:outline-none"
+            >
+              <option value="USD">USD $ | United States</option>
+              <option value="CAD">CAD $ | Canada</option>
+              <option value="GBP">GBP £ | United Kingdom</option>
+              <option value="EUR">EUR € | European Union</option>
+            </select>
+          </div>
+
+          {/* Payment Badges */}
+          <div className="flex items-center gap-2 flex-wrap justify-center">
+            {['Visa', 'Mastercard', 'Amex', 'Discover', 'Apple Pay', 'Google Pay', 'Shop Pay'].map((badge) => (
+              <span
+                key={badge}
+                className="px-2 py-0.5 border border-[#99F6E4] bg-white rounded text-[10px] font-bold text-[#0F766E]"
+              >
+                {badge}
+              </span>
+            ))}
+          </div>
+
+          {/* Copyright */}
+          <div className="text-[11px] text-stone-500 text-center sm:text-right">
+            <span>© 2026, </span>
+            <Link href="/" className="hover:text-[#0F766E] font-semibold">
+              Vette&apos;s Crafting
+            </Link>
+            <span> • All Rights Reserved</span>
+          </div>
+
         </div>
+
       </div>
     </footer>
   );

@@ -1,208 +1,236 @@
 'use client';
 
 import React from 'react';
-import { Sparkles, Shield, Clock, Heart, Award, ArrowDown, Check, Star, Leaf, Send } from 'lucide-react';
-import { useCart } from '@/lib/cart-context';
+import Image from 'next/image';
+import Link from 'next/link';
+import { Sparkles, Heart, Star, ShieldCheck, Leaf, ArrowDown, Mail, PackageCheck } from 'lucide-react';
 
 export function HeroSection() {
-  const { openCart } = useCart();
-
   return (
-    <section className="relative overflow-hidden pt-8 pb-16 lg:pt-12 lg:pb-20 border-b border-[#2D5A3D]/15 bg-gradient-to-b from-[#FAF8F5] via-[#F4F8F5] to-[#FAF8F5]">
-      {/* Decorative Botanical Green & Pastel Ambience */}
-      <div className="absolute top-10 right-[-5%] w-96 h-96 rounded-full bg-[#EBF4EE]/70 blur-3xl pointer-events-none -z-10" />
-      <div className="absolute bottom-10 left-[-5%] w-80 h-80 rounded-full bg-[#FEF3C7]/40 blur-3xl pointer-events-none -z-10" />
+    <section className="relative overflow-hidden bg-gradient-to-b from-[#0D9488] via-[#0D9488] to-[#0f766e] text-white pt-6 pb-16 sm:pb-20 lg:pt-10 lg:pb-24">
+      
+      {/* Whimsical Polka Dot & Craft Sparkle Overlay */}
+      <div 
+        className="absolute inset-0 opacity-10 pointer-events-none"
+        style={{
+          backgroundImage: 'radial-gradient(circle, #FFFFFF 1.5px, transparent 1.5px)',
+          backgroundSize: '24px 24px'
+        }}
+      />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Playful Floating Craft Accent Bubbles */}
+      <div className="absolute top-10 right-10 w-64 h-64 rounded-full bg-[#FEF08A]/10 blur-3xl pointer-events-none" />
+      <div className="absolute bottom-12 left-10 w-72 h-72 rounded-full bg-[#16A34A]/20 blur-3xl pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Editorial Split Screen Hero */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        {/* Split Grid: Left Story & Badges, Right Playful Craft Photo Showcase */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
           
-          {/* Left Column: Vette's Personal Welcome & Story */}
+          {/* Left Column: Whimsical Craft Identity, Vette's Story & Primary CTAs */}
           <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
             
-            {/* Scarcity / Artisan Eyebrow */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EDF5F0] border border-[#2D5A3D]/25 text-[#2D5A3D] text-xs font-bold tracking-wider uppercase shadow-sm">
-              <Leaf className="w-3.5 h-3.5 text-[#2D5A3D] fill-current" />
-              <span>Small Handmade Studio • Handcrafted with Joy</span>
+            {/* Playful Craft Eyebrow Pill */}
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 backdrop-blur-sm border border-white/30 text-[#FEF08A] text-xs font-bold tracking-wider uppercase shadow-sm">
+              <Sparkles className="w-4 h-4 fill-[#FEF08A] animate-pulse" />
+              <span>Vette&apos;s Air Dry Foam Clay Studio</span>
+              <span className="text-white/60">•</span>
+              <span className="text-white">Handmade with Joy</span>
             </div>
 
-            {/* Editorial Headline */}
-            <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#1C1917] leading-[1.12]">
-              Welcome to{' '}
-              <span className="text-[#2D5A3D] underline decoration-[#86C1A4]/60 decoration-wavy underline-offset-4">
-                Vette&apos;s Crafting
-              </span>
-            </h1>
+            {/* Main Editorial & Fun Craft Headline */}
+            <div className="space-y-2">
+              <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.15] drop-shadow-sm">
+                Whimsical Handcrafted{' '}
+                <span className="text-[#FEF08A] inline-block underline decoration-[#E11D48] decoration-wavy decoration-2 underline-offset-8">
+                  Air Dry Foam Clay
+                </span>{' '}
+                Decor That Brings Joy.
+              </h1>
+              <p className="font-sans text-teal-100 text-sm sm:text-base max-w-xl mx-auto lg:mx-0 font-medium pt-1">
+                Sweet faux-bake confections, cake slices, and holiday donut ornaments sculpted by hand in Florida. Made for tiered stands, holiday trees, and gift boxes.
+              </p>
+            </div>
 
-            {/* Vette's Authentic Heartfelt Introduction */}
-            <div className="p-4 sm:p-5 rounded-2xl bg-white/90 border border-[#2D5A3D]/20 shadow-sm space-y-2 text-left">
-              <p className="font-serif italic text-base sm:text-lg text-[#1E3F2B] leading-relaxed">
-                &ldquo;Hello friends! We’re thrilled to introduce Vette&apos;s Crafting, a small, handmade hobby dedicated to bringing you unique, crafted pieces that blend creativity with quality. Every item is made by hand with joy.&rdquo;
-              </p>
-              <p className="text-xs sm:text-sm text-[#1C1917]/75 font-sans leading-relaxed">
-                Our goal is to offer creations that add a personal touch to your home. Follow our page for new designs that will be posted weekly, explore our shop below, or message us directly to place your custom order!
-              </p>
-              <div className="pt-2 flex items-center justify-between text-xs text-[#2D5A3D] font-semibold border-t border-[#2D5A3D]/10">
-                <span className="flex items-center gap-1.5">
-                  <Heart className="w-3.5 h-3.5 text-rose-500 fill-current" />
-                  <span>— Vette, Owner &amp; Maker</span>
+            {/* Vette's Authentic Story Card (White craft card on vibrant teal background) */}
+            <div className="p-5 sm:p-6 rounded-2xl bg-white text-stone-900 shadow-xl border-2 border-teal-200/60 text-left space-y-3 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-[#FEF08A]/30 rounded-bl-full pointer-events-none" />
+              
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#0D9488]">
+                <Leaf className="w-4 h-4 text-[#16A34A] fill-[#16A34A]" />
+                <span>Meet the Maker • Personal Promise</span>
+              </div>
+
+              <blockquote className="font-serif italic text-sm sm:text-base text-stone-800 leading-relaxed">
+                &ldquo;Hello friends! We’re thrilled to introduce Vette&apos;s Crafting, a small, handmade hobby dedicated to bringing you unique, crafted pieces that blend creativity with quality. Every item is made by hand with joy. I will include the tutorial or the name of the other creator if the product was not inspired by me. Our goal is to offer creations that add a personal touch to your home.&rdquo;
+              </blockquote>
+
+              <div className="pt-2 flex flex-wrap items-center justify-between gap-2 text-xs border-t border-stone-200">
+                <span className="font-bold text-[#16A34A] flex items-center gap-1.5">
+                  <Heart className="w-3.5 h-3.5 text-[#E11D48] fill-[#E11D48]" />
+                  <span>— Vette, Sculptor &amp; Founder</span>
+                  <span className="text-[10px] text-stone-500 font-normal bg-stone-100 px-2 py-0.5 rounded-full">
+                    Favorite Color: Green 💚
+                  </span>
                 </span>
-                <span className="text-[11px] text-[#1C1917]/50 font-normal">
-                  Honoring creators with tutorial &amp; inspiration credits
+                <span className="text-[11px] text-stone-500 font-medium">
+                  Follow for weekly drops &amp; custom designs
                 </span>
               </div>
             </div>
 
-            {/* Micro-Trust Highlights Bar */}
-            <div className="pt-1">
-              <div className="inline-grid grid-cols-1 sm:grid-cols-3 gap-3 p-3 rounded-2xl bg-white border border-[#2D5A3D]/15 shadow-sm text-xs font-medium text-[#1C1917]/90 text-left">
-                <div className="flex items-center gap-2 px-2">
-                  <div className="w-7 h-7 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-800 flex-shrink-0">
-                    <Star className="w-3.5 h-3.5 fill-current" />
-                  </div>
-                  <div>
-                    <span className="font-bold text-[#1C1917]">5.0 Maker Rating</span>
-                    <p className="text-[11px] text-[#1C1917]/60">Handmade with Joy</p>
-                  </div>
+            {/* 4 Click-Inspiring Craft Trust Badges (Yellow, Green, Red, White) */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-1 text-left">
+              <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-2.5 flex items-center gap-2 text-white">
+                <div className="w-7 h-7 rounded-full bg-[#FEF08A] text-stone-900 flex items-center justify-center font-bold flex-shrink-0">
+                  <Star className="w-4 h-4 fill-[#CA8A04] text-[#CA8A04]" />
                 </div>
-
-                <div className="flex items-center gap-2 px-2 sm:border-l sm:border-[#2D5A3D]/10">
-                  <div className="w-7 h-7 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-800 flex-shrink-0">
-                    <Shield className="w-3.5 h-3.5 text-[#2D5A3D]" />
-                  </div>
-                  <div>
-                    <span className="font-bold text-[#1C1917]">Crush-Proof Box</span>
-                    <p className="text-[11px] text-[#1C1917]/60">Safe Holiday Transit</p>
-                  </div>
+                <div className="min-w-0">
+                  <p className="text-xs font-bold leading-tight">5.0 Rating</p>
+                  <p className="text-[10px] text-teal-100 truncate">Handcrafted Joy</p>
                 </div>
+              </div>
 
-                <div className="flex items-center gap-2 px-2 sm:border-l sm:border-[#2D5A3D]/10">
-                  <div className="w-7 h-7 rounded-full bg-amber-50 flex items-center justify-center text-amber-700 flex-shrink-0">
-                    <Award className="w-3.5 h-3.5" />
-                  </div>
-                  <div>
-                    <span className="font-bold text-[#1C1917]">Weekly Restocks</span>
-                    <p className="text-[11px] text-[#1C1917]/60">New Designs Weekly</p>
-                  </div>
+              <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-2.5 flex items-center gap-2 text-white">
+                <div className="w-7 h-7 rounded-full bg-[#16A34A] text-white flex items-center justify-center font-bold flex-shrink-0">
+                  <ShieldCheck className="w-4 h-4" />
+                </div>
+                <div className="min-w-0">
+                  <p className="text-xs font-bold leading-tight">100% Clay</p>
+                  <p className="text-[10px] text-teal-100 truncate">Air Dry Foam</p>
+                </div>
+              </div>
+
+              <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-2.5 flex items-center gap-2 text-white">
+                <div className="w-7 h-7 rounded-full bg-[#E11D48] text-white flex items-center justify-center font-bold flex-shrink-0">
+                  <PackageCheck className="w-4 h-4" />
+                </div>
+                <div className="min-w-0">
+                  <p className="text-xs font-bold leading-tight">Crush-Proof</p>
+                  <p className="text-[10px] text-teal-100 truncate">Safe Shipping</p>
+                </div>
+              </div>
+
+              <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-2.5 flex items-center gap-2 text-white">
+                <div className="w-7 h-7 rounded-full bg-white text-[#0D9488] flex items-center justify-center font-bold flex-shrink-0">
+                  <Sparkles className="w-4 h-4 text-[#0D9488]" />
+                </div>
+                <div className="min-w-0">
+                  <p className="text-xs font-bold leading-tight">Featherlight</p>
+                  <p className="text-[10px] text-teal-100 truncate">Tree-Branch Safe</p>
                 </div>
               </div>
             </div>
 
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-1">
+            {/* High-Converting Action CTAs (Red & Yellow) */}
+            <div className="pt-2 flex flex-col sm:flex-row items-center gap-3 justify-center lg:justify-start">
               <a
-                href="#catalog"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#2D5A3D] hover:bg-[#1E3F2B] text-white px-8 py-3.5 rounded-full font-bold shadow-lg hover:shadow-xl transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0 text-sm"
+                href="#collection"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#E11D48] hover:bg-[#BE123C] text-white text-sm font-bold uppercase tracking-wider px-7 py-3.5 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5 active:translate-y-0"
               >
-                <span>Explore Vette&apos;s Shop</span>
+                <span>Shop Air Dry Foam Clay Drop</span>
                 <ArrowDown className="w-4 h-4 animate-bounce" />
               </a>
 
               <a
                 href="#custom"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white hover:bg-stone-50 text-[#1C1917] border border-[#2D5A3D]/25 px-6 py-3.5 rounded-full font-bold transition duration-200 text-xs"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#FEF08A] hover:bg-[#FACC15] text-stone-900 text-sm font-bold uppercase tracking-wider px-6 py-3.5 rounded-full shadow hover:shadow-md transition-all"
               >
-                <Send className="w-3.5 h-3.5 text-[#C2410C]" />
-                <span>Message for Custom Orders</span>
+                <Mail className="w-4 h-4 text-stone-900" />
+                <span>Custom Order Request</span>
               </a>
-            </div>
-
-            {/* Guarantees */}
-            <div className="flex items-center justify-center lg:justify-start gap-5 pt-2 text-xs text-[#1C1917]/70">
-              <span className="flex items-center gap-1.5">
-                <Check className="w-4 h-4 text-[#2D5A3D]" />
-                Non-perishable (never melts)
-              </span>
-              <span className="flex items-center gap-1.5">
-                <Check className="w-4 h-4 text-[#2D5A3D]" />
-                Tree-branch safe (&lt;2.5 oz)
-              </span>
-              <span className="flex items-center gap-1.5">
-                <Check className="w-4 h-4 text-[#2D5A3D]" />
-                Free shipping over $75
-              </span>
             </div>
 
           </div>
 
-          {/* Right Column: Vette's Real Handcrafted Photo Showcase */}
+          {/* Right Column: Playful Craft Polaroid Showcase with Real Photos */}
           <div className="lg:col-span-5 relative">
-            <div className="relative mx-auto max-w-md lg:max-w-none">
+            <div className="relative mx-auto max-w-sm sm:max-w-md lg:max-w-none">
               
-              {/* Primary Feature Card: Vette's Pastel Donut Collection */}
-              <div className="relative z-10 rounded-3xl overflow-hidden bg-white shadow-2xl border-4 border-white transform rotate-[-1deg] hover:rotate-0 transition-transform duration-500">
-                <div className="relative aspect-[4/5] w-full overflow-hidden bg-stone-100">
-                  <img
-                    src="/products/pastel-donuts-set6.jpg"
-                    alt="Vette's Pastel Patisserie Donut Collection (Set of 6)"
-                    className="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-700"
-                  />
-                  
-                  {/* Floating artisan seal badge */}
-                  <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3 py-1.5 rounded-full shadow-md border border-[#2D5A3D]/20 flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse" />
-                    <span className="text-[11px] font-bold text-[#1C1917] tracking-wider uppercase">
-                      Vette&apos;s Handcrafted Set of 6
-                    </span>
-                  </div>
-
-                  {/* Scarcity Pill overlay */}
-                  <div className="absolute bottom-4 left-4 right-4 bg-[#1E3F2B]/95 backdrop-blur-md text-white p-3.5 rounded-2xl flex items-center justify-between shadow-xl">
-                    <div>
-                      <p className="text-xs text-emerald-200 font-semibold uppercase tracking-wider">
-                        Handcrafted by Vette
-                      </p>
-                      <p className="text-sm font-serif font-bold text-white">
-                        Pastel Patisserie Donut Collection
-                      </p>
-                    </div>
-                    <div className="text-right">
-                      <span className="text-xs line-through text-white/50 mr-1.5">$115</span>
-                      <span className="text-base font-bold text-emerald-300">$95</span>
-                    </div>
-                  </div>
-                </div>
+              {/* Playful Floating Badge */}
+              <div className="absolute -top-4 -left-4 z-20 bg-[#FEF08A] text-stone-900 text-xs font-extrabold uppercase tracking-wider px-3.5 py-1.5 rounded-full shadow-lg border-2 border-stone-900 transform -rotate-6 flex items-center gap-1.5">
+                <Sparkles className="w-3.5 h-3.5 text-[#E11D48] fill-[#E11D48]" />
+                <span>100% Handcrafted</span>
               </div>
 
-              {/* Secondary Floating Mini Card: Velvet Berry Cake Slice */}
-              <div className="hidden sm:block absolute -bottom-8 -left-8 z-20 w-44 bg-white p-2.5 rounded-2xl shadow-xl border border-[#2D5A3D]/20 transform rotate-[3deg] hover:rotate-0 transition-transform">
-                <div className="relative aspect-square w-full rounded-xl overflow-hidden mb-2 bg-stone-100">
-                  <img
-                    src="/products/velvet-berry-cake-slice.jpg"
-                    alt="Velvet Berry Cake Slice"
-                    className="w-full h-full object-cover"
-                  />
-                  <span className="absolute top-1.5 right-1.5 bg-[#C2410C] text-white text-[9px] font-black px-1.5 py-0.5 rounded">
-                    HOT
-                  </span>
+              {/* 4-Image Craft Collage Grid */}
+              <div className="grid grid-cols-2 gap-3 sm:gap-4 p-3 bg-white/10 backdrop-blur-md rounded-3xl border-2 border-white/20 shadow-2xl">
+                
+                {/* Photo 1: Pastel Donuts */}
+                <div className="group relative bg-white p-2 rounded-2xl shadow-md transform -rotate-2 hover:rotate-0 transition-transform duration-300">
+                  <div className="relative aspect-square rounded-xl overflow-hidden bg-stone-100">
+                    <Image
+                      src="/products/pastel-donuts-set6.jpg"
+                      alt="Handcrafted Pastel Air Dry Foam Clay Donuts"
+                      fill
+                      sizes="(max-width: 768px) 50vw, 25vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <div className="pt-2 text-center">
+                    <p className="font-serif text-[11px] font-bold text-stone-800 truncate">Pastel Donut Confections</p>
+                    <p className="text-[10px] text-[#16A34A] font-bold">Air Dry Foam Clay</p>
+                  </div>
                 </div>
-                <p className="text-[11px] font-bold text-[#1C1917] truncate">
-                  Velvet Berry Slice
-                </p>
-                <p className="text-[10px] text-[#2D5A3D] font-bold">
-                  $34 • Hand-Piped
-                </p>
+
+                {/* Photo 2: Berry Cake Slice */}
+                <div className="group relative bg-white p-2 rounded-2xl shadow-md transform rotate-2 hover:rotate-0 transition-transform duration-300">
+                  <div className="relative aspect-square rounded-xl overflow-hidden bg-stone-100">
+                    <Image
+                      src="/products/velvet-berry-cake-slice.jpg"
+                      alt="Velvet Berry Air Dry Foam Clay Cake Slice"
+                      fill
+                      sizes="(max-width: 768px) 50vw, 25vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <div className="pt-2 text-center">
+                    <p className="font-serif text-[11px] font-bold text-stone-800 truncate">Velvet Berry Cake Slice</p>
+                    <p className="text-[10px] text-[#E11D48] font-bold">With Glazed Cherry</p>
+                  </div>
+                </div>
+
+                {/* Photo 3: Peppermint Twist Cones */}
+                <div className="group relative bg-white p-2 rounded-2xl shadow-md transform rotate-1 hover:rotate-0 transition-transform duration-300">
+                  <div className="relative aspect-square rounded-xl overflow-hidden bg-stone-100">
+                    <Image
+                      src="/products/peppermint-twist-cones-set4.jpg"
+                      alt="Peppermint Twist Air Dry Foam Clay Cones"
+                      fill
+                      sizes="(max-width: 768px) 50vw, 25vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <div className="pt-2 text-center">
+                    <p className="font-serif text-[11px] font-bold text-stone-800 truncate">Peppermint Twist Cones</p>
+                    <p className="text-[10px] text-[#0D9488] font-bold">Set of 4 Ornaments</p>
+                  </div>
+                </div>
+
+                {/* Photo 4: Holiday Sprinkle Donuts */}
+                <div className="group relative bg-white p-2 rounded-2xl shadow-md transform -rotate-1 hover:rotate-0 transition-transform duration-300">
+                  <div className="relative aspect-square rounded-xl overflow-hidden bg-stone-100">
+                    <Image
+                      src="/products/holiday-sprinkle-donuts-set9.jpg"
+                      alt="Festive Holiday Sprinkle Air Dry Foam Clay Donuts"
+                      fill
+                      sizes="(max-width: 768px) 50vw, 25vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <div className="pt-2 text-center">
+                    <p className="font-serif text-[11px] font-bold text-stone-800 truncate">Holiday Sprinkle Donuts</p>
+                    <p className="text-[10px] text-[#16A34A] font-bold">Set of 9 Keepsakes</p>
+                  </div>
+                </div>
+
               </div>
 
-              {/* Mint Chocolate Chip Cones Mini Card */}
-              <div className="hidden sm:block absolute -top-6 -right-6 z-20 w-48 bg-white p-2.5 rounded-2xl shadow-xl border border-[#2D5A3D]/20 transform rotate-[4deg] hover:rotate-0 transition-transform">
-                <div className="relative aspect-square w-full rounded-xl overflow-hidden mb-2 bg-stone-100">
-                  <img
-                    src="/products/mint-chocolate-chip-cones-set4.jpg"
-                    alt="Mint Chocolate Chip Striped Ornament Cones"
-                    className="w-full h-full object-cover"
-                  />
-                  <span className="absolute top-1.5 right-1.5 bg-[#2D5A3D] text-white text-[9px] font-black px-1.5 py-0.5 rounded">
-                    SET OF 4
-                  </span>
-                </div>
-                <p className="text-[11px] font-bold text-[#1C1917] truncate">
-                  Mint Striped Cones
-                </p>
-                <p className="text-[10px] text-[#2D5A3D] font-bold">
-                  $68 • Favorite Green
-                </p>
+              {/* Bottom Playful Tag */}
+              <div className="mt-3 text-center">
+                <span className="inline-block bg-[#0f766e] text-teal-100 text-[11px] font-semibold px-4 py-1 rounded-full border border-teal-500/40">
+                  ✨ Authentic Photography of Vette&apos;s Hand-Sculpted Creations
+                </span>
               </div>
 
             </div>
@@ -211,6 +239,21 @@ export function HeroSection() {
         </div>
 
       </div>
+
+      {/* Whimsical Scalloped / Wavy SVG Divider transitioning into Pure White Grid */}
+      <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none z-10 pointer-events-none">
+        <svg
+          className="relative block w-full h-8 sm:h-12 text-white"
+          viewBox="0 0 1200 120"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M0,0 C150,90 350,-40 500,50 C650,140 900,10 1200,60 L1200,120 L0,120 Z"
+            fill="#FFFFFF"
+          />
+        </svg>
+      </div>
+
     </section>
   );
 }

@@ -2,28 +2,42 @@
 
 @layer base {
   :root {
-    --background: #FAF8F5;
-    --foreground: #1C1917;
-    --alabaster: #FAF8F5;
-    --espresso: #1C1917;
-    
-    /* Vette's Signature Green Palette */
-    --forest: #2D5A3D;
-    --forest-dark: #1E3F2B;
-    --forest-light: #EDF5F0;
-    --sage: #4A6B53;
-    --sage-light: #F0F6F2;
-    --mint-frosting: #86C1A4;
-    
-    /* Accents */
-    --berry: #831843;
-    --terracotta: #C2410C;
-    --gold: #D97706;
+    --background: #FFFFFF;
+    --foreground: #1E293B;
+
+    /* Vette's Requested Color System (Scientifically Click-Optimized) */
+    /* 1. White Canvas */
+    --canvas: #FFFFFF;
+    --canvas-subtle: #FAFAFA;
+
+    /* 2. Teal - Brand Identity & Artisanal Craft */
+    --teal-primary: #0D9488;
+    --teal-dark: #115E59;
+    --teal-light: #F0FDFA;
+    --teal-border: #CCFBF1;
+
+    /* 3. Green - Vette's Favorite Color & Trust Anchors */
+    --green-accent: #16A34A;
+    --green-dark: #15803D;
+    --green-light: #DCFCE7;
+    --green-border: #BBF7D0;
+
+    /* 4. Red - Primary Conversion Click Engine (CTAs & Urgency) */
+    --red-cta: #E11D48;
+    --red-cta-hover: #BE123C;
+    --red-light: #FFE4E6;
+    --red-border: #FECDD3;
+
+    /* 5. Yellow - High-Luminance Attention & Scarcity */
+    --yellow-accent: #EAB308;
+    --yellow-dark: #CA8A04;
+    --yellow-light: #FEF9C3;
+    --yellow-border: #FEF08A;
   }
 
   body {
-    background-color: var(--background);
-    color: var(--foreground);
+    background-color: #FFFFFF;
+    color: #1E293B;
     font-family: "Plus Jakarta Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -35,49 +49,42 @@
   }
 }
 
-/* Custom scrollbar */
+/* Custom crisp scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: #FAF8F5;
+  background: #FFFFFF;
 }
 ::-webkit-scrollbar-thumb {
-  background: #C4D7CB;
+  background: #CBD5E1;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #8FA898;
+  background: #94A3B8;
 }
 
-/* Glassmorphism and subtle craft borders */
-.craft-card {
+/* Millie's Pottery Style Clean Ceramic Cards */
+.pottery-card {
   background-color: #FFFFFF;
-  border: 1px solid rgba(45, 90, 61, 0.12);
-  box-shadow: 0 4px 20px -2px rgba(45, 90, 61, 0.05);
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 2px 12px -2px rgba(15, 118, 110, 0.04);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.craft-card:hover {
+.pottery-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 12px 28px -4px rgba(45, 90, 61, 0.15);
-  border-color: rgba(45, 90, 61, 0.35);
+  box-shadow: 0 12px 28px -4px rgba(13, 148, 136, 0.12);
+  border-color: #0D9488;
 }
 
-.badge-sold {
-  background: rgba(28, 25, 23, 0.88);
-  backdrop-filter: blur(4px);
-  color: #FFFFFF;
+/* Attention pulse for scarcity and click triggers */
+@keyframes soft-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.92; transform: scale(1.02); }
 }
 
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-.animate-shimmer {
-  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
-  background-size: 200% 100%;
-  animation: shimmer 2.5s infinite;
+.pulse-click {
+  animation: soft-pulse 2.5s infinite;
 }

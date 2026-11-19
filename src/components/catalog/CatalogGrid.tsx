@@ -1,228 +1,170 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
-import { Product, ProductCategory } from '@/types/product';
+import { Product } from '@/types/product';
 import { ProductCard } from './ProductCard';
-import { Filter, Search, Sparkles, SlidersHorizontal, RotateCcw, Package } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface CatalogGridProps {
   initialProducts: Product[];
 }
 
-const CATEGORIES: ProductCategory[] = [
-  'All Pieces',
-  'Ice Cream Cones',
-  'Donut Wreaths',
-  'Cake Slices & Gift Boxes',
-  'Custom Requests',
-  'Recently Sold Archive',
-];
-
 export function CatalogGrid({ initialProducts }: CatalogGridProps) {
   const [products] = useState<Product[]>(initialProducts);
-  const [selectedCategory, setSelectedCategory] = useState<ProductCategory>('All Pieces');
-  const [searchQuery, setSearchQuery] = useState('');
-  const [sortBy, setSortBy] = useState<'featured' | 'price-asc' | 'price-desc' | 'rating'>('featured');
+  const [availabilityFilter, setAvailabilityFilter] = useState<'all' | 'in-stock' | 'sold-out'>('all');
+  const [sortBy, setSortBy] = useState<'best-selling' | 'featured' | 'a-z' | 'z-a' | 'price-asc' | 'price-desc' | 'date-new'>('best-selling');
+  const [currentPage, setCurrentPage] = useState(1);
 
   // Filtered & Sorted Products
   const filteredProducts = useMemo(() => {
     return products
       .filter((prod) => {
-        // Category filtering
-        if (selectedCategory === 'Recently Sold Archive') {
-          if (!prod.isSold && prod.inStock) return false;
-        } else if (selectedCategory === 'All Pieces') {
-          // Show all active pieces + sold pieces
-        } else {
-          if (prod.category !== selectedCategory) return false;
-        }
-
-        // Search query filtering
-        if (searchQuery.trim()) {
-          const q = searchQuery.toLowerCase();
-          const matchTitle = prod.title.toLowerCase().includes(q);
-          const matchDesc = prod.description.toLowerCase().includes(q);
-          const matchCategory = prod.category.toLowerCase().includes(q);
-          const matchMaterials = prod.materials.some(m => m.toLowerCase().includes(q));
-          if (!matchTitle && !matchDesc && !matchCategory && !matchMaterials) {
-            return false;
-          }
-        }
-
+        if (availabilityFilter === 'in-stock') return !prod.isSold && prod.inStock;
+        if (availabilityFilter === 'sold-out') return prod.isSold || !prod.inStock;
         return true;
       })
       .sort((a, b) => {
         if (sortBy === 'price-asc') return a.price - b.price;
         if (sortBy === 'price-desc') return b.price - a.price;
-        if (sortBy === 'rating') return b.rating - a.rating;
-        // Default featured: available first, then featured, then price
+        if (sortBy === 'a-z') return a.title.localeCompare(b.title);
+        if (sortBy === 'z-a') return b.title.localeCompare(a.title);
+        if (sortBy === 'best-selling') return (b.reviewCount || 0) - (a.reviewCount || 0);
         if (a.isSold && !b.isSold) return 1;
         if (!a.isSold && b.isSold) return -1;
-        return (b.featured ? 1 : 0) - (a.featured ? 1 : 0);
+        return 0;
       });
-  }, [products, selectedCategory, searchQuery, sortBy]);
-
-  // Category counts
-  const categoryCounts = useMemo(() => {
-    const counts: Record<string, number> = {
-      'All Pieces': products.length,
-      'Recently Sold Archive': products.filter(p => p.isSold).length,
-    };
-    products.forEach((p) => {
-      counts[p.category] = (counts[p.category] || 0) + 1;
-    });
-    return counts;
-  }, [products]);
+  }, [products, availabilityFilter, sortBy]);
 
   return (
-    <section id="catalog" className="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-20">
+    <section id="collection" className="bg-white py-8 sm:py-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      {/* Section Editorial Header */}
-      <div className="text-center max-w-3xl mx-auto mb-10 space-y-3">
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FAF0E6] text-[#C2410C] text-xs font-semibold tracking-wider uppercase">
-          <Sparkles className="w-3.5 h-3.5" />
-          <span>The Holiday Patisserie Showcase</span>
-        </div>
-        <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1C1917] tracking-tight">
-          Handcrafted Heirloom Decor
-        </h2>
-        <p className="font-sans text-sm sm:text-base text-[#1C1917]/70 leading-relaxed">
-          Each piece is individually hand-piped, kiln-cured, and sealed in our studio. Never mass manufactured; when a batch sells out, it joins our archive.
-        </p>
-      </div>
-
-      {/* Etsy-Style Category Filter Chips & Controls Bar */}
-      <div className="space-y-4 mb-8">
+      {/* 1. Filter & Sort Bar (Teal-Tinted Minimalist Toolbar) */}
+      <div className="flex flex-wrap items-center justify-between gap-4 py-3.5 px-4 bg-[#F0FDFA] border border-[#99F6E4] rounded-xl text-xs text-stone-700 font-sans mb-8">
         
-        {/* Horizontal Scrollable Category Pills */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none border-b border-[#1C1917]/10">
-          {CATEGORIES.map((cat) => {
-            const isActive = selectedCategory === cat;
-            const count = categoryCounts[cat] ?? 0;
+        {/* Left: Filter Controls */}
+        <div className="flex items-center gap-3 flex-wrap">
+          <span className="font-bold text-[#0F766E] uppercase tracking-wider text-[11px]">
+            Filter:
+          </span>
 
-            return (
-              <button
-                key={cat}
-                onClick={() => setSelectedCategory(cat)}
-                className={`flex-shrink-0 inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-xs font-semibold transition-all duration-200 ${
-                  isActive
-                    ? 'bg-[#1C1917] text-white shadow-md'
-                    : 'bg-white hover:bg-stone-100 text-[#1C1917]/80 border border-[#1C1917]/10 hover:border-[#1C1917]/30'
-                }`}
-              >
-                <span>{cat}</span>
-                <span
-                  className={`text-[10px] px-1.5 py-0.2 rounded-full ${
-                    isActive ? 'bg-white/20 text-white' : 'bg-stone-100 text-[#1C1917]/60'
-                  }`}
-                >
-                  {count}
-                </span>
-              </button>
-            );
-          })}
+          {/* Availability Filter Pill Buttons */}
+          <div className="flex items-center gap-1.5">
+            <button
+              onClick={() => setAvailabilityFilter('all')}
+              className={`px-3.5 py-1.5 rounded-full text-xs transition ${
+                availabilityFilter === 'all'
+                  ? 'bg-[#0D9488] text-white font-bold shadow-sm'
+                  : 'bg-white hover:bg-[#CCFBF1] text-[#0F766E] border border-[#99F6E4]'
+              }`}
+            >
+              All ({products.length})
+            </button>
+
+            <button
+              onClick={() => setAvailabilityFilter('in-stock')}
+              className={`px-3.5 py-1.5 rounded-full text-xs transition ${
+                availabilityFilter === 'in-stock'
+                  ? 'bg-[#16A34A] text-white font-bold shadow-sm'
+                  : 'bg-white hover:bg-[#CCFBF1] text-[#0F766E] border border-[#99F6E4]'
+              }`}
+            >
+              In stock ({products.filter((p) => !p.isSold).length})
+            </button>
+
+            <button
+              onClick={() => setAvailabilityFilter('sold-out')}
+              className={`px-3.5 py-1.5 rounded-full text-xs transition ${
+                availabilityFilter === 'sold-out'
+                  ? 'bg-[#E11D48] text-white font-bold shadow-sm'
+                  : 'bg-white hover:bg-[#CCFBF1] text-[#0F766E] border border-[#99F6E4]'
+              }`}
+            >
+              Sold out ({products.filter((p) => p.isSold).length})
+            </button>
+          </div>
         </div>
 
-        {/* Search & Sort Controls Row */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2">
-          
-          {/* Instant Search Input */}
-          <div className="relative w-full sm:w-80">
-            <Search className="w-4 h-4 text-[#1C1917]/40 absolute left-3.5 top-1/2 transform -translate-y-1/2" />
-            <input
-              type="text"
-              placeholder="Search cones, donuts, lavender..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-4 py-2 bg-white border border-[#1C1917]/15 rounded-full text-xs text-[#1C1917] placeholder-[#1C1917]/40 focus:outline-none focus:ring-2 focus:ring-[#7E22CE]/30 focus:border-[#7E22CE] transition"
-            />
-            {searchQuery && (
-              <button
-                onClick={() => setSearchQuery('')}
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-xs text-[#1C1917]/40 hover:text-[#1C1917]"
-              >
-                Clear
-              </button>
-            )}
+        {/* Right: Sort By Dropdown & Product Counter */}
+        <div className="flex items-center gap-4 ml-auto">
+          <div className="flex items-center gap-1.5">
+            <label htmlFor="sort-select" className="text-[#0F766E] font-medium">
+              Sort by:
+            </label>
+            <select
+              id="sort-select"
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value as any)}
+              className="bg-white font-semibold text-stone-900 focus:outline-none cursor-pointer px-2.5 py-1 rounded-md border border-[#99F6E4] text-xs"
+            >
+              <option value="best-selling">Best selling</option>
+              <option value="featured">Featured</option>
+              <option value="a-z">Alphabetically, A-Z</option>
+              <option value="z-a">Alphabetically, Z-A</option>
+              <option value="price-asc">Price, low to high</option>
+              <option value="price-desc">Price, high to low</option>
+            </select>
           </div>
 
-          {/* Results count & Sort dropdown */}
-          <div className="flex items-center justify-between w-full sm:w-auto gap-4">
-            <span className="text-xs font-medium text-[#1C1917]/60">
-              Showing <strong className="text-[#1C1917]">{filteredProducts.length}</strong> creations
-            </span>
-
-            <div className="flex items-center gap-2">
-              <SlidersHorizontal className="w-3.5 h-3.5 text-[#1C1917]/60" />
-              <select
-                value={sortBy}
-                onChange={(e) => setSortBy(e.target.value as any)}
-                className="bg-white border border-[#1C1917]/15 rounded-lg text-xs font-medium px-3 py-1.5 text-[#1C1917] focus:outline-none focus:ring-2 focus:ring-[#7E22CE]/30 cursor-pointer"
-              >
-                <option value="featured">Sort by: Curated Featured</option>
-                <option value="price-asc">Price: Low to High</option>
-                <option value="price-desc">Price: High to Low</option>
-                <option value="rating">Highest Rated (5.0 Stars)</option>
-              </select>
-            </div>
-          </div>
-
+          <span className="text-[#0F766E] font-semibold text-xs hidden sm:inline">
+            {filteredProducts.length} {filteredProducts.length === 1 ? 'product' : 'products'}
+          </span>
         </div>
 
       </div>
 
-      {/* Catalog Grid (Responsive 1-4 Columns) */}
-      {filteredProducts.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7">
+      {/* 2. Product Grid (4 Columns Desktop, 2 Columns Mobile) */}
+      {filteredProducts.length === 0 ? (
+        <div className="text-center py-16 bg-[#F0FDFA] rounded-2xl border border-dashed border-[#5EEAD4]">
+          <p className="font-serif text-lg text-[#0F766E]">No pieces found in this selection.</p>
+          <button
+            onClick={() => {
+              setAvailabilityFilter('all');
+              setSortBy('best-selling');
+            }}
+            className="mt-3 px-4 py-2 rounded-full bg-[#FEF08A] hover:bg-[#FDE047] text-stone-900 text-xs font-bold uppercase tracking-wider transition"
+          >
+            Clear filters
+          </button>
+        </div>
+      ) : (
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8 sm:gap-x-6 sm:gap-y-10">
           {filteredProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
-      ) : (
-        /* Empty State */
-        <div className="text-center py-16 px-4 bg-white rounded-3xl border border-dashed border-[#1C1917]/20 max-w-lg mx-auto space-y-4">
-          <div className="w-12 h-12 rounded-full bg-stone-100 flex items-center justify-center mx-auto text-[#1C1917]/40">
-            <Package className="w-6 h-6" />
-          </div>
-          <h3 className="font-serif text-lg font-bold text-[#1C1917]">
-            No ornaments match your selection
-          </h3>
-          <p className="text-xs text-[#1C1917]/60">
-            Try adjusting your search keywords or browsing our other patisserie categories.
-          </p>
-          <button
-            onClick={() => {
-              setSelectedCategory('All Pieces');
-              setSearchQuery('');
-            }}
-            className="inline-flex items-center gap-2 text-xs font-bold text-[#7E22CE] bg-[#FCE7F3] px-4 py-2 rounded-full hover:bg-[#FCE7F3]/80 transition"
-          >
-            <RotateCcw className="w-3.5 h-3.5" />
-            <span>Reset All Filters</span>
-          </button>
-        </div>
       )}
 
-      {/* Social Proof Archive Anchor Callout */}
-      <div id="sold-archive" className="mt-16 p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-[#FAF8F5] via-[#F5F2EB] to-[#FAF8F5] border border-[#1C1917]/10 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-6">
-        <div className="space-y-1.5 max-w-xl">
-          <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#4A5D4E]">
-            <Sparkles className="w-3.5 h-3.5 text-[#C2410C]" />
-            <span>Social Proof & Archival Collection</span>
-          </div>
-          <h3 className="font-serif text-2xl font-bold text-[#1C1917]">
-            Missed a sold piece? We take custom commissions.
-          </h3>
-          <p className="text-xs sm:text-sm text-[#1C1917]/70">
-            Our faux bake pieces are produced in limited batches. If an archived piece is marked SOLD, we can sculpt a similar bespoke piece tailored to your holiday color scheme.
-          </p>
-        </div>
-        <a
-          href="#custom"
-          className="flex-shrink-0 bg-[#1C1917] hover:bg-[#2E2825] text-white px-6 py-3 rounded-full text-xs font-bold tracking-wide shadow-md transition"
+      {/* 3. Pagination Bar */}
+      <div className="mt-14 pt-8 border-t border-[#99F6E4] flex items-center justify-center gap-3 text-xs text-stone-600 font-sans">
+        <button
+          disabled={currentPage === 1}
+          onClick={() => setCurrentPage(1)}
+          className={`px-3 py-1.5 flex items-center gap-1 ${
+            currentPage === 1 ? 'opacity-40 cursor-not-allowed' : 'hover:text-[#0D9488]'
+          }`}
         >
-          Commission Bespoke Decor
-        </a>
+          <ChevronLeft className="w-3.5 h-3.5" />
+          <span>Previous</span>
+        </button>
+
+        <span className="w-7 h-7 rounded-full bg-[#0D9488] text-white flex items-center justify-center font-bold">
+          1
+        </span>
+
+        <button
+          disabled
+          className="w-7 h-7 rounded-full text-stone-400 opacity-60 flex items-center justify-center cursor-not-allowed"
+        >
+          2
+        </button>
+
+        <button
+          disabled
+          className="px-3 py-1.5 flex items-center gap-1 opacity-40 cursor-not-allowed"
+        >
+          <span>Next</span>
+          <ChevronRight className="w-3.5 h-3.5" />
+        </button>
       </div>
 
     </section>

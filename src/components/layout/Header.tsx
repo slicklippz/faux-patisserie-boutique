@@ -2,186 +2,181 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { ShoppingBag, Sparkles, ShieldCheck, Heart, Menu, X, ArrowRight, PackageCheck, Leaf } from 'lucide-react';
+import { ShoppingBag, Search, User, Menu, X, Sparkles } from 'lucide-react';
 import { useCart } from '@/lib/cart-context';
 
 export function Header() {
-  const { openCart, itemCount, subtotal } = useCart();
+  const { openCart, itemCount } = useCart();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
 
   return (
-    <header className="sticky top-0 z-40 w-full bg-[#FAF8F5]/95 backdrop-blur-md border-b border-[#2D5A3D]/15 transition-all">
-      {/* Top Announcement Bar with Vette's Community Note */}
-      <div className="bg-[#1E3F2B] text-[#FAF8F5] text-xs py-2 px-4 font-sans tracking-wide border-b border-emerald-900/40">
-        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2 text-center sm:text-left">
-          <div className="flex items-center gap-2 mx-auto sm:mx-0">
-            <span className="flex h-2 w-2 relative">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
-            </span>
-            <span className="font-semibold text-emerald-200">Weekly Drop:</span>
-            <span>New handcrafted designs posted weekly! Made by hand with joy.</span>
-          </div>
-
-          <div className="hidden md:flex items-center gap-4 text-white/80">
-            <span className="flex items-center gap-1">
-              <PackageCheck className="w-3.5 h-3.5 text-emerald-300" />
-              Crush-proof foam packaging
-            </span>
-            <span>•</span>
-            <span className="flex items-center gap-1">
-              <ShieldCheck className="w-3.5 h-3.5 text-teal-300" />
-              Free Shipping over $75
-            </span>
-            <span>•</span>
-            <Link
-              href="/admin"
-              className="text-emerald-200 hover:text-white underline transition-colors"
-            >
-              Studio Admin
-            </Link>
-          </div>
-        </div>
+    <header className="sticky top-0 z-40 w-full bg-[#0D9488] text-white shadow-md border-b border-[#0f766e]">
+      
+      {/* 1. Top Announcement Bar (Deep Teal with Sunshine Yellow Highlights) */}
+      <div className="bg-[#0f766e] text-white text-xs py-2 px-4 text-center font-sans tracking-wide border-b border-teal-700/50">
+        <p className="max-w-7xl mx-auto flex items-center justify-center gap-2 flex-wrap">
+          <span className="inline-flex items-center gap-1 font-bold text-[#FEF08A]">
+            <Sparkles className="w-3.5 h-3.5 fill-current" />
+            Welcome to Vette&apos;s Crafting
+          </span>
+          <span className="opacity-60 hidden sm:inline">•</span>
+          <span className="font-medium text-teal-100">Fresh Air Dry Foam Clay Designs Weekly</span>
+          <span className="opacity-60 hidden sm:inline">•</span>
+          <span className="font-bold text-[#FEF08A] bg-teal-800/60 px-2 py-0.5 rounded-full text-[11px]">
+            Free Shipping on Orders $75+
+          </span>
+        </p>
       </div>
 
-      {/* Main Navigation Bar */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+      {/* 2. Main Header Bar: Search on left, Centered Logo, Icons on right */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 sm:py-4">
+        <div className="relative flex items-center justify-between">
           
-          {/* Mobile menu trigger */}
-          <div className="flex items-center md:hidden">
+          {/* Left: Search Trigger & Mobile Menu Toggle */}
+          <div className="flex items-center gap-3 w-1/3">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-[#1C1917] hover:text-[#2D5A3D] focus:outline-none"
-              aria-label="Toggle navigation"
+              className="p-1.5 md:hidden text-white hover:text-[#FEF08A] transition"
+              aria-label="Toggle Menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
+
+            <button
+              onClick={() => setSearchOpen(!searchOpen)}
+              className="hidden sm:inline-flex items-center gap-2 text-teal-100 hover:text-white transition text-xs font-semibold bg-teal-800/40 hover:bg-teal-800/70 px-3 py-1.5 rounded-full"
+              title="Search store"
+            >
+              <Search className="w-3.5 h-3.5 text-[#FEF08A]" />
+              <span>Search Designs</span>
+            </button>
           </div>
 
-          {/* Brand Identity / Logo */}
-          <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
-            <Link href="/" className="group flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-[#EDF5F0] border border-[#2D5A3D]/30 flex items-center justify-center text-[#2D5A3D] group-hover:rotate-12 transition-transform duration-300 shadow-sm">
-                <Leaf className="w-5 h-5 fill-current" />
-              </div>
-              <div className="flex flex-col">
-                <span className="font-serif text-2xl sm:text-3xl font-bold tracking-tight text-[#1C1917]">
-                  Vette&apos;s Crafting
-                </span>
-                <span className="text-[11px] font-sans uppercase tracking-[0.2em] text-[#2D5A3D] font-semibold -mt-1">
-                  Handmade with Joy • Unique Crafted Pieces
-                </span>
-              </div>
+          {/* Center: Clean Brand Logo */}
+          <div className="flex flex-col items-center justify-center text-center w-1/3">
+            <Link href="/" className="group flex flex-col items-center">
+              <span className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white group-hover:text-[#FEF08A] transition-colors drop-shadow-sm">
+                Vette&apos;s Crafting
+              </span>
             </Link>
           </div>
 
-          {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center space-x-8 font-sans text-sm font-medium text-[#1C1917]/80">
-            <a href="#intro" className="hover:text-[#2D5A3D] transition-colors flex items-center gap-1">
-              <span>Meet Vette</span>
-              <span className="bg-[#2D5A3D]/10 text-[#2D5A3D] text-[10px] px-2 py-0.5 rounded-full font-bold">
-                Story
-              </span>
-            </a>
-            <a href="#catalog" className="hover:text-[#2D5A3D] transition-colors">
-              The Shop
-            </a>
-            <a href="#craft" className="hover:text-[#2D5A3D] transition-colors">
-              Craft &amp; Tutorial Notes
-            </a>
-            <a href="#reviews" className="hover:text-[#2D5A3D] transition-colors">
-              Collector Reviews
-            </a>
-            <a href="#custom" className="hover:text-[#2D5A3D] transition-colors text-[#2D5A3D] font-bold">
-              Custom Order
-            </a>
-          </nav>
-
-          {/* Right Action: Cart Button & Admin shortcut */}
-          <div className="flex items-center gap-3">
+          {/* Right: Studio Admin & Shopping Bag */}
+          <div className="flex items-center justify-end gap-2 sm:gap-3 w-1/3">
             <Link
               href="/admin"
-              className="hidden lg:inline-flex items-center text-xs text-[#1C1917]/70 hover:text-[#2D5A3D] px-2.5 py-1.5 rounded-md hover:bg-[#2D5A3D]/5 transition font-medium"
-              title="Studio Dashboard & Product Editor"
+              className="hidden sm:inline-flex items-center gap-1.5 text-xs text-teal-100 hover:text-white font-medium transition bg-teal-800/40 hover:bg-teal-800/70 px-3 py-1.5 rounded-full"
+              title="Studio Admin Dashboard"
             >
-              Studio Edit
+              <User className="w-3.5 h-3.5 text-[#FEF08A]" />
+              <span className="hidden lg:inline">Studio Admin</span>
             </Link>
 
             <button
               onClick={openCart}
-              className="relative flex items-center gap-2.5 bg-[#2D5A3D] hover:bg-[#1E3F2B] text-white px-4 sm:px-5 py-2.5 rounded-full shadow-md hover:shadow-lg transition-all duration-200 active:scale-95"
-              aria-label="Open Cart Drawer"
+              className="relative p-2 text-white hover:text-[#FEF08A] transition flex items-center gap-2 bg-teal-800/50 hover:bg-teal-800/80 px-3.5 py-1.5 rounded-full border border-teal-500/40 shadow-sm"
+              aria-label="Open Shopping Bag"
             >
-              <ShoppingBag className="w-4 h-4 text-emerald-200" />
-              <span className="text-xs sm:text-sm font-bold tracking-wide">
-                Tote
-              </span>
-              {itemCount > 0 && (
-                <span className="bg-[#C2410C] text-white text-[11px] font-bold px-2 py-0.5 rounded-full leading-tight">
+              <ShoppingBag className="w-4 h-4 text-[#FEF08A]" />
+              <span className="hidden sm:inline text-xs font-bold tracking-wide">Cart</span>
+              {itemCount > 0 ? (
+                <span className="bg-[#E11D48] text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow animate-bounce">
                   {itemCount}
                 </span>
-              )}
-              {subtotal > 0 && (
-                <span className="hidden sm:inline-block text-xs font-medium text-emerald-100 border-l border-emerald-400/30 pl-2">
-                  ${subtotal.toFixed(2)}
-                </span>
+              ) : (
+                <span className="text-[10px] font-medium text-teal-200">(0)</span>
               )}
             </button>
           </div>
+
         </div>
+
+        {/* Collapsible Search Input */}
+        {searchOpen && (
+          <div className="mt-3 pt-3 border-t border-teal-600/50 flex items-center justify-center animate-fadeIn">
+            <div className="relative w-full max-w-md">
+              <input
+                type="text"
+                placeholder="Search Air Dry Foam Clay cones, donuts, cakes..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full bg-white border border-teal-400 rounded-full px-4 py-2 pl-10 text-xs text-stone-900 placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-[#FEF08A] shadow-inner"
+                autoFocus
+              />
+              <Search className="w-4 h-4 text-stone-400 absolute left-3.5 top-2.5" />
+            </div>
+          </div>
+        )}
       </div>
 
-      {/* Mobile Drawer Navigation */}
+      {/* 3. Sub-Navigation Bar directly below Logo */}
+      <nav className="border-t border-teal-600/40 bg-[#0d8a7f] hidden md:block">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ul className="flex items-center justify-center space-x-8 text-xs font-bold tracking-wider uppercase text-teal-100 py-3">
+            <li>
+              <Link href="/" className="hover:text-white transition">
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/#collection"
+                className="text-white border-b-2 border-[#FEF08A] pb-1 font-extrabold flex items-center gap-1.5"
+              >
+                <span>Air Dry Foam Clay</span>
+                <span className="w-1.5 h-1.5 rounded-full bg-[#FEF08A] animate-pulse" />
+              </Link>
+            </li>
+            <li>
+              <Link href="/#collection" className="hover:text-white transition">
+                Shop All Pieces
+              </Link>
+            </li>
+            <li>
+              <Link href="/#custom" className="hover:text-white text-[#FEF08A] transition flex items-center gap-1">
+                <span>Custom Orders</span>
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[#FAF8F5] border-b border-[#2D5A3D]/15 px-4 pt-3 pb-6 space-y-3">
-          <div className="flex flex-col space-y-2 font-sans text-sm">
-            <a
-              href="#intro"
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 rounded-lg hover:bg-[#2D5A3D]/5 font-semibold text-[#2D5A3D]"
-            >
-              🌿 Meet Vette &amp; Our Story
-            </a>
-            <a
-              href="#catalog"
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 rounded-lg hover:bg-[#2D5A3D]/5 font-medium"
-            >
-              🍰 Explore The Shop
-            </a>
-            <a
-              href="#craft"
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 rounded-lg hover:bg-[#2D5A3D]/5 font-medium"
-            >
-              ✨ Craft &amp; Tutorial Credits
-            </a>
-            <a
-              href="#reviews"
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 rounded-lg hover:bg-[#2D5A3D]/5 font-medium"
-            >
-              ⭐ 5-Star Collector Reviews
-            </a>
-            <a
-              href="#custom"
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 rounded-lg hover:bg-[#2D5A3D]/5 font-bold text-[#C2410C]"
-            >
-              💌 Message for Custom Order
-            </a>
-            <Link
-              href="/admin"
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 rounded-lg bg-[#2D5A3D]/10 text-[#2D5A3D] font-bold flex items-center justify-between"
-            >
-              <span>Vette&apos;s Studio Admin</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
+        <div className="md:hidden bg-[#0f766e] border-t border-teal-600 px-4 pt-3 pb-5 space-y-3 animate-fadeIn">
+          <Link
+            href="/"
+            onClick={() => setMobileMenuOpen(false)}
+            className="block text-sm font-semibold text-white py-1.5 hover:text-[#FEF08A]"
+          >
+            Home
+          </Link>
+          <Link
+            href="/#collection"
+            onClick={() => setMobileMenuOpen(false)}
+            className="block text-sm font-bold text-[#FEF08A] py-1.5"
+          >
+            Air Dry Foam Clay Collection
+          </Link>
+          <Link
+            href="/#custom"
+            onClick={() => setMobileMenuOpen(false)}
+            className="block text-sm font-semibold text-white py-1.5 hover:text-[#FEF08A]"
+          >
+            Custom Orders
+          </Link>
+          <Link
+            href="/admin"
+            onClick={() => setMobileMenuOpen(false)}
+            className="block text-sm font-semibold text-teal-200 py-1.5 border-t border-teal-600/60 pt-2"
+          >
+            Studio Admin
+          </Link>
         </div>
       )}
+
     </header>
   );
 }
